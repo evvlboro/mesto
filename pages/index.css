@@ -5,3 +5,20 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__line/header__line.css);
+
+@import url(../blocks/portfolio/portfolio.css);
+@import url(../blocks/portfolio/__container/portfolio__container.css);
+@import url(../blocks/portfolio/__avatar/portfolio__avatar.css);
+@import url(../blocks/portfolio/__button-add/portfolio__button-add.css);
+@import url(../blocks/portfolio/__photo-info/portfolio__photo-info.css);
+@import url(../blocks/portfolio/__name/portfolio__name.css);
+@import url(../blocks/portfolio/__about/portfolio__about.css);
+@import url(../blocks/);
+@import url(../blocks/);
+@import url(../blocks/);
+@import url(../blocks/);
+@import url(../blocks/);
+@import url(../blocks/);
+@import url(../blocks/);
+@import url(../blocks/);
+
