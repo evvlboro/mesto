@@ -16,3 +16,9 @@
 .popup__button-close:focus {
   outline: none;
 }
+
+@media (max-width: 520px) {
+  .popup__button-close {
+    background-size: 40px;
+  }
+}

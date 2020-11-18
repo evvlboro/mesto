@@ -10,3 +10,9 @@
   line-height: 17px;
   color: black;
 }
+
+@media (max-width: 520px) {
+  .popup__input {
+    width: 238px;
+  }
+}

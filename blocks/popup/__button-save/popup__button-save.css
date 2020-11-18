@@ -16,10 +16,18 @@
 .popup__button-save:hover {
   opacity: .6;
   transition: opacity .3s;
-  pointer
 }
 
 .popup__button-save:focus {
   outline: none;
+}
+
+@media (max-width: 520px) {
+  .popup__button-save {
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
 

@@ -6,3 +6,12 @@
   line-height: 29px;
   color: black;
 }
+
+@media (max-width: 520px) {
+  .popup__title {
+    width: 238px;
+    margin: 25px auto 45px auto;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
