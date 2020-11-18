@@ -6,4 +6,7 @@
   grid-template-areas:
   "name button"
   "about about";
+  row-gap: 16px;
+  column-gap: 18px;
+  align-items: flex-end;
 }
