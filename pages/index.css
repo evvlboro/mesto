@@ -1,5 +1,7 @@
 @import url(../vendor/normalize.css);
 
+@import url(../fonts/inter.css);
+
 @import url(../blocks/page/page.css);
 
 @import url(../blocks/header/header.css);
@@ -14,6 +16,18 @@
 @import url(../blocks/portfolio/__name/portfolio__name.css);
 @import url(../blocks/portfolio/__about/portfolio__about.css);
 @import url(../blocks/portfolio/__button-edit/portfolio__button-edit.css);
+
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__cards/elements__cards.css);
+@import url(../blocks/elements/__card/elements__card.css);
+@import url(../blocks/elements/__card-image/elements__card-image.css);
+@import url(../blocks/elements/__card-background/elements__card-background.css);
+@import url(../blocks/elements/__card-title/elements__card-title.css);
+@import url(../blocks/elements/__card-like/elements__card-like.css);
+@import url(../blocks/elements/__text-container/elements__text-container.css);
+
+@import url(../blocks/);
+@import url(../blocks/);
 @import url(../blocks/);
 @import url(../blocks/);
 @import url(../blocks/);

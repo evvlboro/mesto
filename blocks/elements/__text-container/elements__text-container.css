@@ -1,0 +1,9 @@
+.elements__text-container {
+  width: 239px;
+  height: 27px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 27px 22px 24px 21px;
+  gap: 25px;
+}
