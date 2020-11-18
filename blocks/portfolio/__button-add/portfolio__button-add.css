@@ -9,6 +9,7 @@
   border: 2px solid #FFF;
   box-sizing: border-box;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .portfolio__button-add:hover {
