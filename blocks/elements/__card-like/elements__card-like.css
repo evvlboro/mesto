@@ -7,3 +7,12 @@
   background-color: white;
   border: none;
 }
+
+.elements__card-like:hover {
+  opacity: .6;
+  transition: opacity .3s;
+}
+
+.elements__card-like:focus {
+  outline: none;
+}

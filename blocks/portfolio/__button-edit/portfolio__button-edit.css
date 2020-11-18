@@ -15,3 +15,7 @@
   opacity: .6;
   transition: opacity .3s;
 }
+
+.portfolio__button-edit:focus {
+  outline: none;
+}

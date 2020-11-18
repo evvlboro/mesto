@@ -26,13 +26,5 @@
 @import url(../blocks/elements/__card-like/elements__card-like.css);
 @import url(../blocks/elements/__text-container/elements__text-container.css);
 
-@import url(../blocks/);
-@import url(../blocks/);
-@import url(../blocks/);
-@import url(../blocks/);
-@import url(../blocks/);
-@import url(../blocks/);
-@import url(../blocks/);
-@import url(../blocks/);
-@import url(../blocks/);
-
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__text/footer__text.css);
