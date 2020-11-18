@@ -7,3 +7,12 @@
   line-height: 48px;
   grid-area: name;
 }
+
+@media (max-width: 425px) {
+  .portfolio__name {
+    font-size: 27px;
+    line-height: 33px;
+    text-align: center;
+    height: 26px;
+  }
+}

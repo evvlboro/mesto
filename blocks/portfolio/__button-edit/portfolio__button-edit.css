@@ -19,3 +19,11 @@
 .portfolio__button-edit:focus {
   outline: none;
 }
+
+@media (max-width: 425px) {
+  .portfolio__button-edit {
+    width: 18px;
+    height: 18px;
+    background-size: 7.5px;
+  }
+}

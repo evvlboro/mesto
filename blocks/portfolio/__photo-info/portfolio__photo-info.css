@@ -5,8 +5,23 @@
   grid-template-rows: 39px 18px;
   grid-template-areas:
   "name button"
-  "about about";
+  "about .";
   row-gap: 16px;
   column-gap: 18px;
   align-items: flex-end;
+}
+
+@media (max-width: 520px) {
+  .portfolio__photo-info {
+    row-gap: 19px;
+    margin-left: 25px;
+  }
+}
+
+@media (max-width: 425px) {
+  .portfolio__photo-info {
+    grid-template-columns: 189px 18px;
+    grid-template-rows: 26px 14px;
+    column-gap: 7px;
+  }
 }

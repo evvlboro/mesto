@@ -7,3 +7,10 @@
   padding: 27px 22px 24px 21px;
   gap: 25px;
 }
+
+@media (max-width: 600px) {
+  .elements__text-container {
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+}

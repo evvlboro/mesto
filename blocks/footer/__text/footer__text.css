@@ -7,3 +7,10 @@
   color: #545454;
 
 }
+
+@media (max-width: 600px) {
+  .footer__text {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

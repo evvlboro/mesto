@@ -19,3 +19,11 @@
 .portfolio__button-add:focus {
   outline: none;
 }
+
+@media (max-width: 720px) {
+  .portfolio__button-add {
+    margin-top: 32px;
+    width: 282px;
+    background-size: 16px;
+  }
+}

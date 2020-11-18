@@ -7,3 +7,11 @@
   line-height: 22px;
   grid-area: about;
 }
+
+@media (max-width: 425px) {
+  .portfolio__about {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
+}

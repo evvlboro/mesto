@@ -1,6 +1,12 @@
 .elements {
-  max-width: 1280px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 51px 200px 0 200px;
+  padding-top: 51px;
   box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .elements {
+    padding-top: 36px;
+  }
 }
