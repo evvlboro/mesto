@@ -15,4 +15,4 @@
 * JavaScript.
 
 
-**Ссылка на Github Pages** будет добалена по завершению работы над проектом.
+**Ссылка на Github Pages:** https://evvlboro.github.io/mesto/
