@@ -32,7 +32,7 @@
           <div class="elements__card-background">
             <div class="elements__text-container">
               <h2 class="elements__card-title">Карачаевск</h2>
-              <button class="elements__card-like"></button>
+              <button class="elements__card-like" onclick="func(this)"></button>
             </div>
           </div>
         </ul>
@@ -41,7 +41,7 @@
           <div class="elements__card-background">
             <div class="elements__text-container">
               <h2 class="elements__card-title">Гора Эльбрус</h2>
-              <button class="elements__card-like"></button>
+              <button class="elements__card-like" onclick="func(this)"></button>
             </div>
           </div>
         </ul>
@@ -50,7 +50,7 @@
           <div class="elements__card-background">
             <div class="elements__text-container">
               <h2 class="elements__card-title">Домбай</h2>
-              <button class="elements__card-like"></button>
+              <button class="elements__card-like" onclick="func(this)"></button>
             </div>
           </div>
         </ul>
@@ -59,7 +59,7 @@
           <div class="elements__card-background">
             <div class="elements__text-container">
               <h2 class="elements__card-title">Гора Эльбрус</h2>
-              <button class="elements__card-like"></button>
+              <button class="elements__card-like" onclick="func(this)"></button>
             </div>
           </div>
         </ul>
@@ -68,7 +68,7 @@
           <div class="elements__card-background">
             <div class="elements__text-container">
               <h2 class="elements__card-title">Домбай</h2>
-              <button class="elements__card-like"></button>
+              <button class="elements__card-like" onclick="func(this)"></button>
             </div>
           </div>
         </ul>
@@ -77,7 +77,7 @@
           <div class="elements__card-background">
             <div class="elements__text-container">
               <h2 class="elements__card-title">Карачаево-Черкесск</h2>
-              <button class="elements__card-like"></button>
+              <button class="elements__card-like" onclick="func(this)"></button>
             </div>
           </div>
         </ul>
@@ -87,16 +87,19 @@
   <footer class="footer">
     <p class="footer__text">© 2020 Mesto Russia</p>
   </footer>
-  <div class="popup popup_opened">
+  <!-- popup_opened -->
+  <div class="popup">
     <div class="popup__container">
       <button class="popup__button-close"></button>
       <form class="popup__form">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__input" placeholder="Имя">
-        <input type="text" class="popup__input" placeholder="О Себе">
+        <!--maxlength="12"-->
+        <input type="text" id="input-name" class="popup__input" placeholder="Имя">
+        <input type="text" id="input-about" class="popup__input" placeholder="О Себе">
         <button class="popup__button-save">Сохранить</button>
       </form>
     </div>
   </div>
+  <script src="./scipts/script.js"></script>
 </body>
 </html>
