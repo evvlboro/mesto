@@ -59,6 +59,6 @@ function formSubmitHandler (evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 
 //кнопка like
-function func(button){
+function likeFunc(button){
   button.classList.toggle('elements__card-like_active');
 }
