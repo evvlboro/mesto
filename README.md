@@ -12,7 +12,7 @@
 **Использующиеся технологии:**
 * HTML
 * CSS
-* JavaScript.
+* JavaScript
 
 
 **Ссылка на Github Pages:** https://evvlboro.github.io/mesto/
