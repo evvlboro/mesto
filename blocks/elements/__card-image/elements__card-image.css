@@ -1,5 +1,9 @@
 .elements__card-image {
-  width: 282px;
-  height: 282px;
-  border-radius: 10px 10px 0px 0px;
+  width: 100%;
+  transition: .5s ease-in-out;
+}
+
+.elements__card-image:hover {
+
+  transform: scale(1.1);
 }
