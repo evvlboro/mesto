@@ -16,6 +16,7 @@
 @import url(../blocks/portfolio/__name/portfolio__name.css);
 @import url(../blocks/portfolio/__about/portfolio__about.css);
 @import url(../blocks/portfolio/__button-edit/portfolio__button-edit.css);
+@import url(../blocks/portfolio/__first-line/portfolio__first-line.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__cards/elements__cards.css);
@@ -25,6 +26,7 @@
 @import url(../blocks/elements/__card-title/elements__card-title.css);
 @import url(../blocks/elements/__card-like/elements__card-like.css);
 @import url(../blocks/elements/__text-container/elements__text-container.css);
+@import url(../blocks/elements/__card-like/_active/elements__card-like_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
@@ -38,5 +40,3 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__button-save/popup__button-save.css);
 
-@import url(../blocks/elements/__card-like/_active/elements__card-like_active.css);
-@import url(../blocks/portfolio/__first-line/portfolio__first-line.css);
