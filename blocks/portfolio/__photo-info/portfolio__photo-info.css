@@ -1,27 +1,11 @@
 .portfolio__photo-info {
   margin-left: 30px;
-  display: grid;
-  grid-template-columns: 294px 24px;
-  grid-template-rows: 39px 18px;
-  grid-template-areas:
-  "name button"
-  "about .";
-  row-gap: 16px;
-  column-gap: 18px;
-  align-items: flex-end;
+  margin-bottom: 0px;
 }
 
 @media (max-width: 520px) {
   .portfolio__photo-info {
-    row-gap: 19px;
     margin-left: 25px;
   }
 }
 
-@media (max-width: 425px) {
-  .portfolio__photo-info {
-    grid-template-columns: 189px 18px;
-    grid-template-rows: 26px 14px;
-    column-gap: 7px;
-  }
-}

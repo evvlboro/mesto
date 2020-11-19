@@ -1,4 +1,7 @@
 .portfolio__button-edit {
+  margin-bottom: 7px;
+  margin-left: 18px;
+  margin-right: 24px;
   grid-area: button;
   width: 24px;
   height: 24px;
@@ -21,8 +24,10 @@
   outline: none;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 520px) {
   .portfolio__button-edit {
+    margin-left: 10px;
+    margin-bottom: 7px;
     width: 18px;
     height: 18px;
     background-size: 7.5px;
