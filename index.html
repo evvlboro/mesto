@@ -11,7 +11,6 @@
 <body class="page">
   <header class="header">
     <img src="./images/logo.svg" alt="Логотип сайта" class="header__logo">
-    <hr class="header__line">
   </header>
   <main>
     <section class="portfolio">
@@ -20,97 +19,91 @@
         <div class="portfolio__photo-info">
           <div class="portfolio__first-line">
             <h1 class="portfolio__name">Жак-Ив Кусто</h1>
-            <button class="portfolio__button-edit"></button>
+            <button type="menu" class="portfolio__button-edit"></button>
           </div>
           <p class="portfolio__about">Исследователь океана</p>
         </div>
       </div>
-      <button class="portfolio__button-add"></button>
+      <button type="menu" class="portfolio__button-add"></button>
     </section>
     <section class="elements">
       <ul class="elements__cards">
         <li class="elements__card">
+          <!--
+            * Это не лишняя обертка. Попробуйте сами убрать этот класс и навести на картинку.
+            * Этот div нужен для эффекта приближения (а не увеличения) и добавлен он был для этого специально.
+          -->
           <div class="elements__card-image-container">
             <img src="./images/krachaevsk.jpg" alt="Карачаевск" class="elements__card-image">
           </div>
-          <div class="elements__card-background">
-            <div class="elements__text-container">
-              <h2 class="elements__card-title">Карачаевск</h2>
-              <button class="elements__card-like" onclick="likeFunc(this)"></button>
-            </div>
+          <div class="elements__text-container">
+            <h2 class="elements__card-title">Карачаевск</h2>
+            <button type="submit" class="elements__card-like" onclick="likeFunc(this)"></button>
           </div>
         </li>
         <li class="elements__card">
           <div class="elements__card-image-container">
             <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="elements__card-image">
           </div>
-          <div class="elements__card-background">
-            <div class="elements__text-container">
-              <h2 class="elements__card-title">Гора Эльбрус</h2>
-              <button class="elements__card-like" onclick="likeFunc(this)"></button>
-            </div>
+          <div class="elements__text-container">
+            <h2 class="elements__card-title">Гора Эльбрус</h2>
+            <button type="submit" class="elements__card-like" onclick="likeFunc(this)"></button>
           </div>
         </li>
         <li class="elements__card">
           <div class="elements__card-image-container">
             <img src="./images/dombai.jpg" alt="Домбай" class="elements__card-image">
           </div>
-          <div class="elements__card-background">
-            <div class="elements__text-container">
-              <h2 class="elements__card-title">Домбай</h2>
-              <button class="elements__card-like" onclick="likeFunc(this)"></button>
-            </div>
+          <div class="elements__text-container">
+            <h2 class="elements__card-title">Домбай</h2>
+            <button type="submit" class="elements__card-like" onclick="likeFunc(this)"></button>
           </div>
         </li>
         <li class="elements__card">
           <div class="elements__card-image-container">
             <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="elements__card-image">
           </div>
-          <div class="elements__card-background">
-            <div class="elements__text-container">
-              <h2 class="elements__card-title">Гора Эльбрус</h2>
-              <button class="elements__card-like" onclick="likeFunc(this)"></button>
-            </div>
+          <div class="elements__text-container">
+            <h2 class="elements__card-title">Гора Эльбрус</h2>
+            <button type="submit" class="elements__card-like" onclick="likeFunc(this)"></button>
           </div>
         </li>
         <li class="elements__card">
           <div class="elements__card-image-container">
             <img src="./images/dombai.jpg" alt="Домбай" class="elements__card-image">
           </div>
-          <div class="elements__card-background">
-            <div class="elements__text-container">
-              <h2 class="elements__card-title">Домбай</h2>
-              <button class="elements__card-like" onclick="likeFunc(this)"></button>
-            </div>
+          <div class="elements__text-container">
+            <h2 class="elements__card-title">Домбай</h2>
+            <button type="submit" class="elements__card-like" onclick="likeFunc(this)"></button>
           </div>
         </li>
         <li class="elements__card">
           <div class="elements__card-image-container">
             <img src="./images/krachaevsk.jpg" alt="Карачаево-Черкесск" class="elements__card-image">
           </div>
-          <div class="elements__card-background">
-            <div class="elements__text-container">
-              <h2 class="elements__card-title">Карачаево-Черкесск</h2>
-              <button class="elements__card-like" onclick="likeFunc(this)"></button>
-            </div>
+          <div class="elements__text-container">
+            <h2 class="elements__card-title">Карачаево-Черкесск</h2>
+            <button type="submit" class="elements__card-like" onclick="likeFunc(this)"></button>
           </div>
         </li>
       </ul>
     </section>
   </main>
   <footer class="footer">
-    <p class="footer__text">© 2020 Mesto Russia</p>
+    <p class="footer__text">&copy; 2020 Mesto Russia</p>
   </footer>
   <!-- popup_opened -->
   <div class="popup">
-    <div class="popup__container">
-      <button class="popup__button-close"></button>
-      <form class="popup__form">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" id="input-name" class="popup__input" placeholder="Имя">
-        <input type="text" id="input-about" class="popup__input" placeholder="О Себе">
-        <button class="popup__button-save">Сохранить</button>
-      </form>
+    <div class="popup__background">
+      <div class="popup__container">
+        <button type="reset" class="popup__button-close"></button>
+        <form class="popup__form" name="popupForm">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input type="text" id="input-name" name="inputName" class="popup__input" placeholder="Имя">
+          <input type="text" id="input-about" name="inputAbout" class="popup__input" placeholder="О Себе">
+          <button type="submit" class="popup__button-save">Сохранить</button>
+        </form>
+      </div>
     </div>
   </div>
   <script src="./scipts/script.js"></script>

@@ -1,32 +1,34 @@
 .popup {
-  width: 96vw;/*почему-то при значении 100vh появляется горизонтальный скролл box-sizing: border-box; не помогает*/
-  /*height: 100vh;*/
-  height: 1068px;
+  width: 98vw;/*почему-то при значении 100vh появляется горизонтальный скролл box-sizing: border-box; не помогает*/
+  height: 1223px;
   background-color: rgba(0,0,0,0.5);
   position: absolute;
   top: 0;
   display: none;
-  justify-content: center;
-  /*align-items: center;*/
-  margin-top: 155px;
 }
 
 @media (max-width: 1024px) {
   .popup {
-    height: 1448px;
+    height: 1604px;
+    width: 96vw;
+  }
+}
+
+@media (max-width: 720px) {
+  .popup {
+    height: 1686px;
   }
 }
 
 @media (max-width: 600px) {
   .popup {
-    height: 2610px;
+    height: 2765px;
   }
 }
 
 @media (max-width: 520px) {
   .popup {
-    height: 2784px;
+    height: 2816px;
     width: 94vw;
-    margin-top: 84px;
   }
 }
