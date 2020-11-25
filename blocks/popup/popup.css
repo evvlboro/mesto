@@ -1,34 +1,21 @@
 .popup {
-  width: 98vw;/*почему-то при значении 100vh появляется горизонтальный скролл box-sizing: border-box; не помогает*/
-  height: 1223px;
-  background-color: rgba(0,0,0,0.5);
+  width: 98vw;
+  height: 100vh;
   position: absolute;
   top: 0;
   display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 1024px) {
   .popup {
-    height: 1604px;
     width: 96vw;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 412px) {
   .popup {
-    height: 1686px;
-  }
-}
-
-@media (max-width: 600px) {
-  .popup {
-    height: 2765px;
-  }
-}
-
-@media (max-width: 520px) {
-  .popup {
-    height: 2816px;
     width: 94vw;
   }
 }

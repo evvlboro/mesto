@@ -1,11 +1,15 @@
 .popup__button-close {
-  grid-area: button-close;
   background-image: url('../../../images/close-icon.png');
   background-color: rgba(0,0,0,0.5);
   background-repeat: no-repeat;
   background-position: center;
   border: none;
   cursor: pointer;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 40px;
+  height: 40px;
 }
 
 .popup__button-close:hover {
@@ -19,6 +23,9 @@
 
 @media (max-width: 520px) {
   .popup__button-close {
-    background-size: 40px;
+    top: -40px;
+    right: 0;
+    width: 26px;
+    height: 26px;
   }
 }

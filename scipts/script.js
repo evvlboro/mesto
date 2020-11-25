@@ -1,9 +1,11 @@
 let editButton = document.querySelector('.portfolio__button-edit');
 let popup = document.querySelector('.popup');
+let overlay = document.querySelector('.overlay');
 
 /*клик по кнопке редактировать*/
 editButton.addEventListener('click', function(){
   popup.classList.add('popup_opened');
+  overlay.classList.add('overlay_active');
   updateForm();
 });
 
@@ -12,6 +14,7 @@ let closePopupButton = popup.querySelector('.popup__button-close');
 /*клик по крестику на форме*/
 closePopupButton.addEventListener('click', function(){
   popup.classList.remove('popup_opened');
+  overlay.classList.remove('overlay_active');
 });
 
 /*ф-ия заполнения полей формы*/
@@ -52,6 +55,7 @@ function formSubmitHandler (evt) {
     about.textContent = jobInput.value;
 
     popup.classList.remove('popup_opened');
+    overlay.classList.remove('overlay_active');
 }
 
 // Прикрепляем обработчик к форме:
