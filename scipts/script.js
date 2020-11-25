@@ -60,5 +60,11 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 //кнопка like
 function likeFunc(button){
-  button.classList.toggle('elements__card-like_active');
+  button.target.classList.toggle('elements__card-like_active');
+}
+
+let likeButtons = document.querySelectorAll('.elements__card-like');
+
+for (let i = 0; i < likeButtons.length; i++){
+  likeButtons[i].addEventListener('click', likeFunc);
 }
