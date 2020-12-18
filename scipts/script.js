@@ -1,3 +1,5 @@
+const overlay = document.querySelector('.overlay');
+
 const initialCards = [
   {
       name: 'Архыз',
@@ -33,8 +35,27 @@ function deleteFunc(button){
   button.target.parentNode.remove();
 }
 
+function closePopupImg(event){
+  console.log(event.target);
+  event.target.parentNode.parentNode.remove();
+  overlay.classList.remove('overlay_active');
+}
+
+function openPopupImg(event){
+  const popupImgTemplate = document.querySelector('#popupImg-template').content;
+  const popupImgElement = popupImgTemplate.cloneNode(true);
+
+  popupImgElement.querySelector('.popupImg__image').src = event.target.src;
+  popupImgElement.querySelector('.popupImg__title').textContent = event.target.alt;
+
+  popupImgElement.querySelector('.popupImg__button-close').addEventListener('click', closePopupImg);
+
+  document.querySelector('.page').append(popupImgElement);
+  overlay.classList.add('overlay_active');
+}
+
 function addCard(item) {
-  let cards = document.querySelector('.elements__cards');
+  const cards = document.querySelector('.elements__cards');
 
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.cloneNode(true);
@@ -45,18 +66,20 @@ function addCard(item) {
 
   cards.append(cardElement);
 
-  let likeButtons = document.querySelectorAll('.elements__card-like');
+  const likeButtons = document.querySelectorAll('.elements__card-like');
   likeButtons[likeButtons.length-1].addEventListener('click', likeFunc);
 
-  let deleteButtons = document.querySelectorAll('.elements__card-delete');
+  const deleteButtons = document.querySelectorAll('.elements__card-delete');
   deleteButtons[deleteButtons.length-1].addEventListener('click', deleteFunc);
+
+  const cardImages = document.querySelectorAll('.elements__card-image');
+  cardImages[cardImages.length-1].addEventListener('click', openPopupImg);
 }
 
-initialCards.reverse().forEach(addCard);
+initialCards.forEach(addCard);
 
-let editButton = document.querySelector('.portfolio__button-edit');
-let popup_edit = document.querySelector('#popup_edit');
-let overlay = document.querySelector('.overlay');
+const editButton = document.querySelector('.portfolio__button-edit');
+const popup_edit = document.querySelector('#popup_edit');
 
 /*клик по кнопке редактировать*/
 editButton.addEventListener('click', function(){

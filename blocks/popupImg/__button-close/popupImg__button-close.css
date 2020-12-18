@@ -1,4 +1,4 @@
-.popup__button-close {
+.popupImg__button-close {
   background-image: url('../../../images/close-icon.png');
   background-color: transparent;
   background-repeat: no-repeat;
@@ -12,17 +12,17 @@
   height: 40px;
 }
 
-.popup__button-close:hover {
+.popupImg__button-close:hover {
   opacity: .6;
   transition: opacity .3s;
 }
 
-.popup__button-close:focus {
+.popupImg__button-close:focus {
   outline: none;
 }
 
 @media (max-width: 520px) {
-  .popup__button-close {
+  .popupImg__button-close {
     top: -40px;
     right: 0;
     width: 26px;
