@@ -91,7 +91,7 @@ editButton.addEventListener('click', function(){
   updateForm();
 });
 
-let closePopupButton = popup_edit.querySelector('.popup__button-close');
+const closePopupButton = popup_edit.querySelector('.popup__button-close');
 
 /*клик по крестику на форме*/
 closePopupButton.addEventListener('click', function(){
@@ -102,11 +102,11 @@ closePopupButton.addEventListener('click', function(){
 
 /*ф-ия заполнения полей формы*/
 function updateForm(){
-  let name = document.querySelector('.portfolio__name');
-  let about = document.querySelector('.portfolio__about');
+  const name = document.querySelector('.portfolio__name');
+  const about = document.querySelector('.portfolio__about');
 
-  let inputName = popup_edit.querySelector('#input-name');
-  let inputAbout = popup_edit.querySelector('#input-about');
+  const inputName = popup_edit.querySelector('#input-name');
+  const inputAbout = popup_edit.querySelector('#input-about');
 
   inputName.value = name.textContent;
   inputAbout.value = about.textContent;
@@ -114,7 +114,7 @@ function updateForm(){
 
 // Обработка кнопки сохранить
 // Находим форму в DOM
-let formElement = popup_edit.querySelector('.popup__form');
+const formElement = popup_edit.querySelector('.popup__form');
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -124,14 +124,14 @@ function formSubmitHandler (evt) {
                         // О том, как это делать, расскажем позже.
 
     // Находим поля формы в DOM
-    let nameInput = popup_edit.querySelector('#input-name');
-    let jobInput = popup_edit.querySelector('#input-about');
+    const nameInput = popup_edit.querySelector('#input-name');
+    const jobInput = popup_edit.querySelector('#input-about');
 
     // Получите значение полей из свойства value
 
     // Выберите элементы, куда должны быть вставлены значения полей
-    let name = document.querySelector('.portfolio__name');
-    let about = document.querySelector('.portfolio__about');
+    const name = document.querySelector('.portfolio__name');
+    const about = document.querySelector('.portfolio__about');
 
     // Вставьте новые значения с помощью textContent
     name.textContent = nameInput.value;
@@ -146,8 +146,8 @@ function formSubmitHandler (evt) {
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 
-let addButton = document.querySelector('.portfolio__button-add');
-let popup_add = document.querySelector('#popup_add');
+const addButton = document.querySelector('.portfolio__button-add');
+const popup_add = document.querySelector('#popup_add');
 
 /*клик по кнопке добавить*/
 addButton.addEventListener('click', function(){
@@ -156,14 +156,14 @@ addButton.addEventListener('click', function(){
   page.classList.add('page_no-scroll');
 
   //чистим поля при открытии формы
-  let inputName = popup_add.querySelector('#input-name');
-  let inputLink = popup_add.querySelector('#input-link');
+  const inputName = popup_add.querySelector('#input-name');
+  const inputLink = popup_add.querySelector('#input-link');
 
   inputName.value = '';
   inputLink.value = '';
 });
 
-let closePopupAddButton = popup_add.querySelector('.popup__button-close');
+const closePopupAddButton = popup_add.querySelector('.popup__button-close');
 
 /*клик по крестику на форме*/
 closePopupAddButton.addEventListener('click', function(){
@@ -174,7 +174,7 @@ closePopupAddButton.addEventListener('click', function(){
 
 // Обработка кнопки сохранить
 // Находим форму в DOM
-let popupAddFormElement = popup_add.querySelector('.popup__form');
+const popupAddFormElement = popup_add.querySelector('.popup__form');
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -184,8 +184,8 @@ function popupAddFormSubmitHandler (evt) {
                         // О том, как это делать, расскажем позже.
 
     // Находим поля формы в DOM
-    let nameInput = popup_add.querySelector('#input-name');
-    let linkInput = popup_add.querySelector('#input-link');
+    const nameInput = popup_add.querySelector('#input-name');
+    const linkInput = popup_add.querySelector('#input-link');
 
     //Добавляем карточки
     addCard({
