@@ -37,7 +37,6 @@ function deleteFunc(button){
 }
 
 function closePopupImg(event){
-  console.log(event.target);
   popupImgElement.classList.remove('popupImg_opened');
   overlay.classList.remove('overlay_active');
   page.classList.remove('page_no-scroll');
