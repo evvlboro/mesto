@@ -3,7 +3,7 @@
 @import url(../fonts/inter.css);
 
 @import url(../blocks/page/page.css);
-@import url(../blocks/page/__no-scroll/page__no-scroll.css);
+@import url(../blocks/page/_no-scroll/page_no-scroll.css);
 
 @import url(../blocks/overlay/_active/overlay_active.css);
 

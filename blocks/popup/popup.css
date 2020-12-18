@@ -3,9 +3,12 @@
   height: 100vh;
   position: fixed;
   top: 0;
-  display: none;
   justify-content: center;
   align-items: center;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: .55s opacity, .55s visibility;
 }
 
 @media (max-width: 1024px) {
