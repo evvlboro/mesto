@@ -36,24 +36,20 @@ function deleteFunc(button){
 function addCard(item) {
   let cards = document.querySelector('.elements__cards');
 
-  cards.insertAdjacentHTML('afterbegin',
-  `<li class="elements__card">
-  <div class="elements__card-image-container">
-    <img src="${item.link}" alt="${item.name}" class="elements__card-image">
-  </div>
-  <button type="button" class="elements__card-delete"></button>
-  <div class="elements__text-container">
-    <h2 class="elements__card-title">${item.name}</h2>
-    <button type="button" class="elements__card-like"></button>
-  </div>
-  </li>`
-  );
+  const cardTemplate = document.querySelector('#card-template').content;
+  const cardElement = cardTemplate.cloneNode(true);
+
+  cardElement.querySelector('.elements__card-image').src = item.link;
+  cardElement.querySelector('.elements__card-image').alt = item.name;
+  cardElement.querySelector('.elements__card-title').textContent = item.name;
+
+  cards.append(cardElement);
 
   let likeButtons = document.querySelectorAll('.elements__card-like');
-  likeButtons[0].addEventListener('click', likeFunc);
+  likeButtons[likeButtons.length-1].addEventListener('click', likeFunc);
 
   let deleteButtons = document.querySelectorAll('.elements__card-delete');
-  deleteButtons[0].addEventListener('click', deleteFunc);
+  deleteButtons[deleteButtons.length-1].addEventListener('click', deleteFunc);
 }
 
 initialCards.reverse().forEach(addCard);
@@ -129,6 +125,13 @@ let popup_add = document.querySelector('#popup_add');
 addButton.addEventListener('click', function(){
   popup_add.classList.add('popup_opened');
   overlay.classList.add('overlay_active');
+
+  //чистим поля при открытии формы
+  let inputName = popup_add.querySelector('#input-name');
+  let inputLink = popup_add.querySelector('#input-link');
+
+  inputName.value = '';
+  inputLink.value = '';
 });
 
 let closePopupAddButton = popup_add.querySelector('.popup__button-close');
