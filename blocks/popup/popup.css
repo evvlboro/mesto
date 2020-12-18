@@ -1,5 +1,5 @@
 .popup {
-  width: 98vw;
+  width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -11,14 +11,3 @@
   transition: .55s opacity, .55s visibility;
 }
 
-@media (max-width: 1024px) {
-  .popup {
-    width: 96vw;
-  }
-}
-
-@media (max-width: 412px) {
-  .popup {
-    width: 94vw;
-  }
-}

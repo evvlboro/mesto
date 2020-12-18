@@ -38,23 +38,22 @@ function deleteFunc(button){
 
 function closePopupImg(event){
   console.log(event.target);
-  event.target.parentNode.parentNode.remove();
+  popupImgElement.classList.remove('popupImg_opened');
   overlay.classList.remove('overlay_active');
   page.classList.remove('page_no-scroll');
 }
 
-function openPopupImg(event){
-  const popupImgTemplate = document.querySelector('#popupImg-template').content;
-  const popupImgElement = popupImgTemplate.cloneNode(true);
+const popupImgElement = document.querySelector('.popupImg');
+popupImgElement.querySelector('.popupImg__button-close').addEventListener('click', closePopupImg);
 
+function openPopupImg(event){
   popupImgElement.querySelector('.popupImg__image').src = event.target.src;
   popupImgElement.querySelector('.popupImg__title').textContent = event.target.alt;
 
-  popupImgElement.querySelector('.popupImg__button-close').addEventListener('click', closePopupImg);
-
-  page.append(popupImgElement);
+  popupImgElement.classList.add('popupImg_opened');
   overlay.classList.add('overlay_active');
   page.classList.add('page_no-scroll');
+
 }
 
 function addCard(item) {

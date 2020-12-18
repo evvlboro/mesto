@@ -1,21 +1,13 @@
 .popupImg {
-  width: 98vw;
+  width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: .55s opacity, .55s visibility;
 }
 
-@media (max-width: 1024px) {
-  .popupImg {
-    width: 96vw;
-  }
-}
-
-@media (max-width: 412px) {
-  .popupImg {
-    width: 94vw;
-  }
-}
