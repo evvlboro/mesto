@@ -1,4 +1,5 @@
 const overlay = document.querySelector('.overlay');
+const page = document.querySelector('.page');
 
 const initialCards = [
   {
@@ -39,6 +40,7 @@ function closePopupImg(event){
   console.log(event.target);
   event.target.parentNode.parentNode.remove();
   overlay.classList.remove('overlay_active');
+  page.classList.remove('page__no-scroll');
 }
 
 function openPopupImg(event){
@@ -50,8 +52,9 @@ function openPopupImg(event){
 
   popupImgElement.querySelector('.popupImg__button-close').addEventListener('click', closePopupImg);
 
-  document.querySelector('.page').append(popupImgElement);
+  page.append(popupImgElement);
   overlay.classList.add('overlay_active');
+  page.classList.add('page__no-scroll');
 }
 
 function addCard(item) {
@@ -85,6 +88,7 @@ const popup_edit = document.querySelector('#popup_edit');
 editButton.addEventListener('click', function(){
   popup_edit.classList.add('popup_opened');
   overlay.classList.add('overlay_active');
+  page.classList.add('page__no-scroll');
   updateForm();
 });
 
@@ -94,6 +98,7 @@ let closePopupButton = popup_edit.querySelector('.popup__button-close');
 closePopupButton.addEventListener('click', function(){
   popup_edit.classList.remove('popup_opened');
   overlay.classList.remove('overlay_active');
+  page.classList.remove('page__no-scroll');
 });
 
 /*ф-ия заполнения полей формы*/
@@ -135,6 +140,7 @@ function formSubmitHandler (evt) {
 
     popup_edit.classList.remove('popup_opened');
     overlay.classList.remove('overlay_active');
+    page.classList.remove('page__no-scroll');
 }
 
 // Прикрепляем обработчик к форме:
@@ -148,6 +154,7 @@ let popup_add = document.querySelector('#popup_add');
 addButton.addEventListener('click', function(){
   popup_add.classList.add('popup_opened');
   overlay.classList.add('overlay_active');
+  page.classList.add('page__no-scroll');
 
   //чистим поля при открытии формы
   let inputName = popup_add.querySelector('#input-name');
@@ -163,6 +170,7 @@ let closePopupAddButton = popup_add.querySelector('.popup__button-close');
 closePopupAddButton.addEventListener('click', function(){
   popup_add.classList.remove('popup_opened');
   overlay.classList.remove('overlay_active');
+  page.classList.remove('page__no-scroll');
 });
 
 // Обработка кнопки сохранить
@@ -188,6 +196,7 @@ function popupAddFormSubmitHandler (evt) {
 
     popup_add.classList.remove('popup_opened');
     overlay.classList.remove('overlay_active');
+    page.classList.remove('page__no-scroll');
 }
 
 // Прикрепляем обработчик к форме:
