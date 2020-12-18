@@ -155,8 +155,8 @@ addButton.addEventListener('click', function(){
   page.classList.add('page_no-scroll');
 
   //чистим поля при открытии формы
-  const inputName = popup_add.querySelector('#input-name');
-  const inputLink = popup_add.querySelector('#input-link');
+  const inputName = popup_add.querySelector('#add-input-name');
+  const inputLink = popup_add.querySelector('#add-input-link');
 
   inputName.value = '';
   inputLink.value = '';
@@ -183,8 +183,8 @@ function popupAddFormSubmitHandler (evt) {
                         // О том, как это делать, расскажем позже.
 
     // Находим поля формы в DOM
-    const nameInput = popup_add.querySelector('#input-name');
-    const linkInput = popup_add.querySelector('#input-link');
+    const nameInput = popup_add.querySelector('#add-input-name');
+    const linkInput = popup_add.querySelector('#add-input-link');
 
     //Добавляем карточки
     addCard({
