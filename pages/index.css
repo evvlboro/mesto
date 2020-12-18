@@ -28,6 +28,7 @@
 @import url(../blocks/elements/__text-container/elements__text-container.css);
 @import url(../blocks/elements/__card-like/_active/elements__card-like_active.css);
 @import url(../blocks/elements/__card-image-container/elements__card-image-container.css);
+@import url(../blocks/elements/__card-delete/elements__card-delete.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);

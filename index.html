@@ -30,6 +30,7 @@
       </section>
       <section class="elements">
         <ul class="elements__cards">
+
         </ul>
       </section>
     </main>
@@ -38,14 +39,25 @@
     </footer>
   </div>
   <!-- popup_opened -->
-  <div class="popup">
+  <div class="popup" id="popup_edit">
     <div class="popup__container">
       <button type="button" class="popup__button-close"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="popupForm">
-        <input type="text" id="input-name" name="inputName" class="popup__input" placeholder="Имя">
-        <input type="text" id="input-about" name="inputAbout" class="popup__input" placeholder="О Себе">
+        <input type="text" id="input-name" name="inputName" class="popup__input" placeholder="Имя" autocomplete="off">
+        <input type="text" id="input-about" name="inputAbout" class="popup__input" placeholder="О Себе" autocomplete="off">
         <button type="submit" class="popup__button-save">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup" id="popup_add">
+    <div class="popup__container">
+      <button type="button" class="popup__button-close"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="popupForm">
+        <input type="text" id="input-name" name="inputName" class="popup__input" placeholder="Название" autocomplete="off">
+        <input type="text" id="input-link" name="inputLink" class="popup__input" placeholder="Ссылка на картинку">
+        <button type="submit" class="popup__button-save">Создать</button>
       </form>
     </div>
   </div>
