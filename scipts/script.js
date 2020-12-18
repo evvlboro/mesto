@@ -1,3 +1,48 @@
+const initialCards = [
+  {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+function addCard(item) {
+  let cards = document.querySelector('.elements__cards');
+
+  cards.insertAdjacentHTML('afterbegin',
+  `<li class="elements__card">
+  <div class="elements__card-image-container">
+    <img src="${item.link}" alt="${item.name}" class="elements__card-image">
+  </div>
+  <div class="elements__text-container">
+    <h2 class="elements__card-title">${item.name}</h2>
+    <button type="button" class="elements__card-like"></button>
+  </div>
+  </li>`
+  );
+}
+
+initialCards.reverse().forEach(addCard);
+
 let editButton = document.querySelector('.portfolio__button-edit');
 let popup = document.querySelector('.popup');
 let overlay = document.querySelector('.overlay');
