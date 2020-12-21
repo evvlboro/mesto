@@ -33,158 +33,144 @@ function likeFunc(button){
 }
 
 function deleteFunc(button){
-  button.target.parentNode.remove();
+  button.target.closest('.elements__card').remove();
 }
 
-function closePopupImg(event){
-  popupImgElement.classList.remove('popupImg_opened');
+function openPopup(popup){
+  popup.classList.add('popup_opened');
+  overlay.classList.add('overlay_active');
+  page.classList.add('page_no-scroll');
+}
+
+function closePopup(popup){
+  popup.classList.remove('popup_opened');
   overlay.classList.remove('overlay_active');
   page.classList.remove('page_no-scroll');
 }
 
-const popupImgElement = document.querySelector('.popupImg');
-popupImgElement.querySelector('.popupImg__button-close').addEventListener('click', closePopupImg);
+const popupImgElement = document.querySelector('#popup_img');
+const popupImage = popupImgElement.querySelector('.popup__image');
+const popupImageTitle = popupImgElement.querySelector('.popup__img-title');
+popupImgElement.querySelector('.popup__button-close').addEventListener('click', function(){
+  closePopup(popupImgElement);
+});
 
 function openPopupImg(event){
-  popupImgElement.querySelector('.popupImg__image').src = event.target.src;
-  popupImgElement.querySelector('.popupImg__title').textContent = event.target.alt;
+  popupImage.src = event.target.src;
+  popupImageTitle.textContent = event.target.alt;
 
-  popupImgElement.classList.add('popupImg_opened');
-  overlay.classList.add('overlay_active');
-  page.classList.add('page_no-scroll');
+  openPopup(popupImgElement);
+}
 
+const cards = document.querySelector('.elements__cards');
+const cardTemplate = document.querySelector('#card-template').content;
+
+function createCard(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = cardElement.querySelector('.elements__card-image');
+  const cardtTitle = cardElement.querySelector('.elements__card-title');
+
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+  cardtTitle.textContent = cardData.name;
+
+  const likeButton = cardElement.querySelector('.elements__card-like');
+  likeButton.addEventListener('click', likeFunc);
+
+  const deleteButton = cardElement.querySelector('.elements__card-delete');
+  deleteButton.addEventListener('click', deleteFunc);
+
+  cardImage.addEventListener('click', openPopupImg);
+
+  return cardElement;
 }
 
 function addCard(item) {
-  const cards = document.querySelector('.elements__cards');
-
-  const cardTemplate = document.querySelector('#card-template').content;
-  const cardElement = cardTemplate.cloneNode(true);
-
-  cardElement.querySelector('.elements__card-image').src = item.link;
-  cardElement.querySelector('.elements__card-image').alt = item.name;
-  cardElement.querySelector('.elements__card-title').textContent = item.name;
-
-  cards.append(cardElement);
-
-  const likeButtons = document.querySelectorAll('.elements__card-like');
-  likeButtons[likeButtons.length-1].addEventListener('click', likeFunc);
-
-  const deleteButtons = document.querySelectorAll('.elements__card-delete');
-  deleteButtons[deleteButtons.length-1].addEventListener('click', deleteFunc);
-
-  const cardImages = document.querySelectorAll('.elements__card-image');
-  cardImages[cardImages.length-1].addEventListener('click', openPopupImg);
+  const card = createCard(item);
+  cards.prepend(card);
 }
 
 initialCards.forEach(addCard);
 
 const editButton = document.querySelector('.portfolio__button-edit');
-const popup_edit = document.querySelector('#popup_edit');
+const popupEdit = document.querySelector('#popup_edit');
 
 /*клик по кнопке редактировать*/
 editButton.addEventListener('click', function(){
-  popup_edit.classList.add('popup_opened');
-  overlay.classList.add('overlay_active');
-  page.classList.add('page_no-scroll');
+  openPopup(popupEdit);
   updateForm();
 });
 
-const closePopupButton = popup_edit.querySelector('.popup__button-close');
+const closePopupButton = popupEdit.querySelector('.popup__button-close');
 
 /*клик по крестику на форме*/
 closePopupButton.addEventListener('click', function(){
-  popup_edit.classList.remove('popup_opened');
-  overlay.classList.remove('overlay_active');
-  page.classList.remove('page_no-scroll');
+  closePopup(popupEdit);
 });
 
+
+const portfolioName = document.querySelector('.portfolio__name');
+const portfolioAbout = document.querySelector('.portfolio__about');
+
+const inputName = popupEdit.querySelector('#input-name');
+const inputAbout = popupEdit.querySelector('#input-about');
 /*ф-ия заполнения полей формы*/
 function updateForm(){
-  const name = document.querySelector('.portfolio__name');
-  const about = document.querySelector('.portfolio__about');
-
-  const inputName = popup_edit.querySelector('#input-name');
-  const inputAbout = popup_edit.querySelector('#input-about');
-
-  inputName.value = name.textContent;
-  inputAbout.value = about.textContent;
+  inputName.value = portfolioName.textContent;
+  inputAbout.value = portfolioAbout.textContent;
 }
 
 // Обработка кнопки сохранить
 // Находим форму в DOM
-const formElement = popup_edit.querySelector('.popup__form');
+const profileForm = popupEdit.querySelector('.popup__form');
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function formSubmitHandler (evt) {
+function handleProfileSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                         // Так мы можем определить свою логику отправки.
                         // О том, как это делать, расскажем позже.
 
-    // Находим поля формы в DOM
-    const nameInput = popup_edit.querySelector('#input-name');
-    const jobInput = popup_edit.querySelector('#input-about');
-
-    // Получите значение полей из свойства value
-
-    // Выберите элементы, куда должны быть вставлены значения полей
-    const name = document.querySelector('.portfolio__name');
-    const about = document.querySelector('.portfolio__about');
-
     // Вставьте новые значения с помощью textContent
-    name.textContent = nameInput.value;
-    about.textContent = jobInput.value;
+    portfolioName.textContent = inputName.value;
+    portfolioAbout.textContent = inputAbout.value;
 
-    popup_edit.classList.remove('popup_opened');
-    overlay.classList.remove('overlay_active');
-    page.classList.remove('page_no-scroll');
+    closePopup(popupEdit);
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', formSubmitHandler);
+profileForm.addEventListener('submit', handleProfileSubmit);
 
 const addButton = document.querySelector('.portfolio__button-add');
-const popup_add = document.querySelector('#popup_add');
+const popupAdd = document.querySelector('#popup_add');
 
 /*клик по кнопке добавить*/
 addButton.addEventListener('click', function(){
-  popup_add.classList.add('popup_opened');
-  overlay.classList.add('overlay_active');
-  page.classList.add('page_no-scroll');
-
-  //чистим поля при открытии формы
-  const inputName = popup_add.querySelector('#add-input-name');
-  const inputLink = popup_add.querySelector('#add-input-link');
-
-  inputName.value = '';
-  inputLink.value = '';
+  openPopup(popupAdd);
 });
 
-const closePopupAddButton = popup_add.querySelector('.popup__button-close');
+const closePopupAddButton = popupAdd.querySelector('.popup__button-close');
 
 /*клик по крестику на форме*/
 closePopupAddButton.addEventListener('click', function(){
-  popup_add.classList.remove('popup_opened');
-  overlay.classList.remove('overlay_active');
-  page.classList.remove('page_no-scroll');
+  closePopup(popupAdd);
 });
 
 // Обработка кнопки сохранить
 // Находим форму в DOM
-const popupAddFormElement = popup_add.querySelector('.popup__form');
+const popupAddFormElement = popupAdd.querySelector('.popup__form');
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function popupAddFormSubmitHandler (evt) {
+function handleCardSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                         // Так мы можем определить свою логику отправки.
                         // О том, как это делать, расскажем позже.
 
     // Находим поля формы в DOM
-    const nameInput = popup_add.querySelector('#add-input-name');
-    const linkInput = popup_add.querySelector('#add-input-link');
+    const nameInput = popupAdd.querySelector('#add-input-name');
+    const linkInput = popupAdd.querySelector('#add-input-link');
 
     //Добавляем карточки
     addCard({
@@ -192,12 +178,12 @@ function popupAddFormSubmitHandler (evt) {
       link: linkInput.value
     });
 
-    popup_add.classList.remove('popup_opened');
-    overlay.classList.remove('overlay_active');
-    page.classList.remove('page_no-scroll');
+    closePopup(popupAdd);
+    nameInput.value = '';
+    linkInput.value = '';
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-popupAddFormElement.addEventListener('submit', popupAddFormSubmitHandler);
+popupAddFormElement.addEventListener('submit', handleCardSubmit);
 
