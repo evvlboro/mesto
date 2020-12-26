@@ -187,3 +187,26 @@ function handleCardSubmit (evt) {
 // он будет следить за событием “submit” - «отправка»
 popupAddFormElement.addEventListener('submit', handleCardSubmit);
 
+function overlayClick(event) {
+  if (event.target.classList.contains('popup_opened')) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
+
+const popups = document.querySelectorAll('.popup');
+Array.from(popups).forEach(
+  (item) => {
+    item.addEventListener('click', (event) => {
+      overlayClick(event);
+    });
+  }
+);
+
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape'){
+    const popup_opened = document.querySelector('.popup_opened');
+    if (popup_opened){
+      closePopup(popup_opened);
+    }
+  }
+});

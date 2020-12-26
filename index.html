@@ -43,9 +43,11 @@
     <div class="popup__container popup__container_form-style">
       <button type="button" class="popup__button-close"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="popupForm">
-        <input type="text" id="input-name" name="inputName" class="popup__input" placeholder="Имя" autocomplete="off">
-        <input type="text" id="input-about" name="inputAbout" class="popup__input" placeholder="О Себе" autocomplete="off">
+      <form class="popup__form" name="popupForm" novalidate>
+        <input type="text" id="input-name" name="inputName" class="popup__input" placeholder="Имя" autocomplete="off" required minlength="2" maxlength="40">
+        <span class="popup__input-error input-name-error"></span>
+        <input type="text" id="input-about" name="inputAbout" class="popup__input" placeholder="О Себе" autocomplete="off" required minlength="2" maxlength="200">
+        <span class="popup__input-error input-about-error"></span>
         <button type="submit" class="popup__button-save">Сохранить</button>
       </form>
     </div>
@@ -54,9 +56,11 @@
     <div class="popup__container popup__container_form-style">
       <button type="button" class="popup__button-close"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="popupForm">
-        <input type="text" id="add-input-name" name="inputName" class="popup__input" placeholder="Название" autocomplete="off">
-        <input type="text" id="add-input-link" name="inputLink" class="popup__input" placeholder="Ссылка на картинку" autocomplete="off">
+      <form class="popup__form" name="popupForm" novalidate>
+        <input type="text" id="add-input-name" name="inputName" class="popup__input" placeholder="Название" autocomplete="off" required minlength="2" maxlength="30">
+        <span class="popup__input-error add-input-name-error"></span>
+        <input type="url" id="add-input-link" name="inputLink" class="popup__input" placeholder="Ссылка на картинку" autocomplete="off" required>
+        <span class="popup__input-error add-input-link-error"></span>
         <button type="submit" class="popup__button-save">Создать</button>
       </form>
     </div>
@@ -81,5 +85,6 @@
     </li>
   </template>
   <script src="./scipts/script.js"></script>
+  <script src="./scipts/validate.js"></script>
 </body>
 </html>
