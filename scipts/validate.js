@@ -1,22 +1,22 @@
-const showInputError = (formElement, inputElement, errorMessage, obj) => {
+const showInputError = (formElement, inputElement, errorMessage, inputErrorClass) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(obj.inputErrorClass);
+  inputElement.classList.add(inputErrorClass);
   errorElement.textContent = errorMessage;
   /*errorElement.classList.add(obj.errorClass);*/
 };
 
-const hideInputError = (formElement, inputElement, obj) => {
+const hideInputError = (formElement, inputElement, inputErrorClass) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(obj.inputErrorClass);
+  inputElement.classList.remove(inputErrorClass);
   /*errorElement.classList.remove(obj.errorClass);*/
   errorElement.textContent = '';
 };
 
-const checkInputValidity = (formElement, inputElement, obj) => {
+const checkInputValidity = (formElement, inputElement, inputErrorClass) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, obj);
+    showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass);
   } else {
-    hideInputError(formElement, inputElement, obj);
+    hideInputError(formElement, inputElement, inputErrorClass);
   }
 };
 
@@ -56,7 +56,7 @@ function enableValidation(obj){
 
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', function () {
-        checkInputValidity(formElement, inputElement, obj);
+        checkInputValidity(formElement, inputElement, obj.inputErrorClass);
         // чтобы проверять его при изменении любого из полей
         toggleButtonState(inputList, buttonElement);
       });
