@@ -9,12 +9,6 @@ function deleteFunc(button){
   button.target.closest('.elements__card').remove();
 }
 
-function clickOverlay(event) {
-  if (event.target.classList.contains('popup_opened')) {
-    closePopup(document.querySelector('.popup_opened'));
-  }
-}
-
 function clickEscapeWhenPopupOpened(event){
   if (event.key === 'Escape') {
     const popup_opened = document.querySelector('.popup_opened');
@@ -25,6 +19,21 @@ function clickEscapeWhenPopupOpened(event){
 }
 
 function openPopup(popup){
+  const popupForm = popup.querySelector('.popup__form');
+  const popupInputs = popup.querySelectorAll('.popup__input');
+  const popupInputErrors = popup.querySelectorAll('.popup__input-error');
+  if (popupInputs){
+    Array.from(popupInputs).forEach((item) => {
+      item.classList.remove(validationConfig.inputErrorClass);
+    });
+  }
+  if (popupInputErrors){
+    Array.from(popupInputErrors).forEach((item) => {
+      item.textContent = '';
+    });
+  }
+  popupForm.reset();
+
   popup.classList.add('popup_opened');
   overlay.classList.add('overlay_active');
   page.classList.add('page_no-scroll');
@@ -179,6 +188,13 @@ function handleCardSubmit (evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 popupAddFormElement.addEventListener('submit', handleCardSubmit);
+
+
+function clickOverlay(event) {
+  if (event.target.classList.contains('popup_opened')) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
 
 const popups = document.querySelectorAll('.popup');
 Array.from(popups).forEach(
