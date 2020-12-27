@@ -42,13 +42,12 @@ function enableValidation(obj){
     const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
     const buttonElement = formElement.querySelector(obj.submitButtonSelector);
 
-    const editButton = document.querySelector('.portfolio__button-edit');
+
     /*клик по кнопке редактировать*/
     editButton.addEventListener('click', function () {
       toggleButtonState(inputList, buttonElement);
     });
 
-    const addButton = document.querySelector('.portfolio__button-add');
     /*клик по кнопке добавить*/
     addButton.addEventListener('click', function () {
       toggleButtonState(inputList, buttonElement);
@@ -64,13 +63,6 @@ function enableValidation(obj){
   });
 }
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-save',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-});
+enableValidation(validationConfig);
 
 
