@@ -32,7 +32,9 @@ function openPopup(popup){
       item.textContent = '';
     });
   }
-  popupForm.reset();
+  if (popupForm){
+    popupForm.reset();
+  }
 
   popup.classList.add('popup_opened');
   overlay.classList.add('overlay_active');
