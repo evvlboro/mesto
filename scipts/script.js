@@ -22,19 +22,19 @@ function clearForm(popup) {
   const popupForm = popup.querySelector('.popup__form');
   const popupInputs = popup.querySelectorAll('.popup__input');
   const popupInputErrors = popup.querySelectorAll('.popup__input-error');
-  if (popupInputs){
-    Array.from(popupInputs).forEach((item) => {
-      item.classList.remove(validationConfig.inputErrorClass);
-    });
-  }
+
+  Array.from(popupInputs).forEach((item) => {
+    item.classList.remove(validationConfig.inputErrorClass);
+  });
+
   if (popupInputErrors){
     Array.from(popupInputErrors).forEach((item) => {
       item.textContent = '';
     });
   }
-  if (popupForm){
-    popupForm.reset();
-  }
+
+  popupForm.reset();
+
 }
 
 function openPopup(popup){
