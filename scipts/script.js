@@ -18,7 +18,7 @@ function clickEscapeWhenPopupOpened(event){
   }
 }
 
-function openPopup(popup){
+function clearForm(popup) {
   const popupForm = popup.querySelector('.popup__form');
   const popupInputs = popup.querySelectorAll('.popup__input');
   const popupInputErrors = popup.querySelectorAll('.popup__input-error');
@@ -35,7 +35,9 @@ function openPopup(popup){
   if (popupForm){
     popupForm.reset();
   }
+}
 
+function openPopup(popup){
   popup.classList.add('popup_opened');
   overlay.classList.add('overlay_active');
   page.classList.add('page_no-scroll');
@@ -102,6 +104,7 @@ const popupEdit = document.querySelector('#popup_edit');
 
 /*клик по кнопке редактировать*/
 editButton.addEventListener('click', function(){
+  clearForm(popupEdit);
   openPopup(popupEdit);
   updateForm();
 });
@@ -151,6 +154,7 @@ const popupAdd = document.querySelector('#popup_add');
 
 /*клик по кнопке добавить*/
 addButton.addEventListener('click', function(){
+  clearForm(popupAdd);
   openPopup(popupAdd);
 });
 
