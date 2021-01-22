@@ -1,6 +1,3 @@
-const overlay = document.querySelector('.overlay');
-const page = document.querySelector('.page');
-
 function likeFunc(button){
   button.target.classList.toggle('elements__card-like_active');
 }
@@ -55,9 +52,6 @@ function closePopup(popup){
   document.removeEventListener('keydown', clickEscapeWhenPopupOpened);
 }
 
-const popupImgElement = document.querySelector('#popup_img');
-const popupImage = popupImgElement.querySelector('.popup__image');
-const popupImageTitle = popupImgElement.querySelector('.popup__img-title');
 popupImgElement.querySelector('.popup__button-close').addEventListener('click', function(){
   closePopup(popupImgElement);
 });
@@ -69,9 +63,6 @@ function openPopupImg(event){
 
   openPopup(popupImgElement);
 }
-
-const cards = document.querySelector('.elements__cards');
-const cardTemplate = document.querySelector('#card-template').content;
 
 function createCard(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -100,8 +91,6 @@ function addCard(item) {
 
 initialCards.forEach(addCard);
 
-const popupEdit = document.querySelector('#popup_edit');
-
 /*клик по кнопке редактировать*/
 editButton.addEventListener('click', function(){
   clearForm(popupEdit);
@@ -116,21 +105,11 @@ closePopupButton.addEventListener('click', function(){
   closePopup(popupEdit);
 });
 
-
-const portfolioName = document.querySelector('.portfolio__name');
-const portfolioAbout = document.querySelector('.portfolio__about');
-
-const inputName = popupEdit.querySelector('#input-name');
-const inputAbout = popupEdit.querySelector('#input-about');
 /*ф-ия заполнения полей формы*/
 function updateForm(){
   inputName.value = portfolioName.textContent;
   inputAbout.value = portfolioAbout.textContent;
 }
-
-// Обработка кнопки сохранить
-// Находим форму в DOM
-const profileForm = popupEdit.querySelector('.popup__form');
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -150,26 +129,17 @@ function handleProfileSubmit (evt) {
 // он будет следить за событием “submit” - «отправка»
 profileForm.addEventListener('submit', handleProfileSubmit);
 
-const popupAdd = document.querySelector('#popup_add');
-
 /*клик по кнопке добавить*/
 addButton.addEventListener('click', function(){
   clearForm(popupAdd);
   openPopup(popupAdd);
 });
 
-const closePopupAddButton = popupAdd.querySelector('.popup__button-close');
-
 /*клик по крестику на форме*/
 closePopupAddButton.addEventListener('click', function(){
   closePopup(popupAdd);
 });
 
-// Обработка кнопки сохранить
-// Находим форму в DOM
-const popupAddFormElement = popupAdd.querySelector('.popup__form');
-const nameInput = popupAdd.querySelector('#add-input-name');
-const linkInput = popupAdd.querySelector('#add-input-link');
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function handleCardSubmit (evt) {
