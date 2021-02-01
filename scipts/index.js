@@ -1,5 +1,8 @@
-import {Card} from './Card.js'
-import {FormValidator} from './FormValidator.js'
+import { Card } from './Card.js'
+import { FormValidator } from './FormValidator.js'
+import { initialCards, overlay, page, popupImgElement, cards, closePopupAddButton, editButton, popupAdd,
+  popupAddFormElement, nameInput, linkInput, popupEdit, profileForm, inputName, inputAbout,
+  closePopupButton, addButton, portfolioName, portfolioAbout, validationConfig} from './constants.js'
 
 function clickEscapeWhenPopupOpened(event){
   if (event.key === 'Escape') {
@@ -12,7 +15,8 @@ function clickEscapeWhenPopupOpened(event){
 
 function clearForm(popup) {
   const popupForm = popup.querySelector('.popup__form');
-  const popupInputs = popup.querySelectorAll('.popup__input');
+
+  /*const popupInputs = popup.querySelectorAll('.popup__input');
   const popupInputErrors = popup.querySelectorAll('.popup__input-error');
 
   Array.from(popupInputs).forEach((item) => {
@@ -23,7 +27,7 @@ function clearForm(popup) {
     Array.from(popupInputErrors).forEach((item) => {
       item.textContent = '';
     });
-  }
+  }*/
 
   popupForm.reset();
 
@@ -34,9 +38,7 @@ export function openPopup(popup){
   overlay.classList.add('overlay_active');
   page.classList.add('page_no-scroll');
 
-  document.addEventListener('keydown', (event) => {
-    clickEscapeWhenPopupOpened(event);
-  });
+  document.addEventListener('keydown', clickEscapeWhenPopupOpened);
 }
 
 export function closePopup(popup){
@@ -151,6 +153,15 @@ function enableValidation(obj){
   const formList = Array.from(document.querySelectorAll(obj.formSelector));
   formList.forEach((formElement) => {
     const formValidator = new FormValidator(obj, formElement);
+
+    addButton.addEventListener('click', () => {
+      formValidator.toggleButtonState();
+      formValidator.clearValidationErrors(popupAdd);
+    });
+
+    editButton.addEventListener('click', function(){
+      formValidator.clearValidationErrors(popupEdit);
+    });
 
     formValidator.enableValidation();
   });

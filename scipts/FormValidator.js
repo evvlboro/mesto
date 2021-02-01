@@ -1,3 +1,5 @@
+import { editButton, validationConfig} from './constants.js';
+
 export class FormValidator {
 
   constructor(data, formElement) {
@@ -36,7 +38,7 @@ export class FormValidator {
     });
   }
 
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._buttonElement.classList.add('button-save_inactive');
       this._buttonElement.disabled = 'true';
@@ -46,20 +48,31 @@ export class FormValidator {
     }
   }
 
-  enableValidation() {
-    editButton.addEventListener('click', () => {
-      this._toggleButtonState();
+  clearValidationErrors(popup) {
+    const popupInputs = popup.querySelectorAll('.popup__input');
+    const popupInputErrors = popup.querySelectorAll('.popup__input-error');
+
+    Array.from(popupInputs).forEach((item) => {
+      item.classList.remove(validationConfig.inputErrorClass);
     });
 
-    addButton.addEventListener('click', () => {
-      this._toggleButtonState();
+    if (popupInputErrors){
+      Array.from(popupInputErrors).forEach((item) => {
+        item.textContent = '';
+      });
+    }
+  }
+
+  enableValidation() {
+    editButton.addEventListener('click', () => {
+      this.toggleButtonState();
     });
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
         // чтобы проверять его при изменении любого из полей
-        this._toggleButtonState();
+        this.toggleButtonState();
       });
     });
   }

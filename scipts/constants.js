@@ -1,31 +1,30 @@
-const overlay = document.querySelector('.overlay');
-const page = document.querySelector('.page');
-const cards = document.querySelector('.elements__cards');
-const cardTemplate = document.querySelector('#card-template').content;
+export const overlay = document.querySelector('.overlay');
+export const page = document.querySelector('.page');
+export const cards = document.querySelector('.elements__cards');
 
-const popupImgElement = document.querySelector('#popup_img');
-const popupImage = popupImgElement.querySelector('.popup__image');
-const popupImageTitle = popupImgElement.querySelector('.popup__img-title');
+export const popupImgElement = document.querySelector('#popup_img');
+export const popupImage = popupImgElement.querySelector('.popup__image');
+export const popupImageTitle = popupImgElement.querySelector('.popup__img-title');
 
-const popupAdd = document.querySelector('#popup_add');
-const closePopupAddButton = popupAdd.querySelector('.popup__button-close');
-const popupAddFormElement = popupAdd.querySelector('.popup__form');
-const nameInput = popupAdd.querySelector('#add-input-name');
-const linkInput = popupAdd.querySelector('#add-input-link');
+export const popupAdd = document.querySelector('#popup_add');
+export const closePopupAddButton = popupAdd.querySelector('.popup__button-close');
+export const popupAddFormElement = popupAdd.querySelector('.popup__form');
+export const nameInput = popupAdd.querySelector('#add-input-name');
+export const linkInput = popupAdd.querySelector('#add-input-link');
 
-const popupEdit = document.querySelector('#popup_edit');
-const profileForm = popupEdit.querySelector('.popup__form');
-const inputName = popupEdit.querySelector('#input-name');
-const inputAbout = popupEdit.querySelector('#input-about');
-const closePopupButton = popupEdit.querySelector('.popup__button-close');
+export const popupEdit = document.querySelector('#popup_edit');
+export const profileForm = popupEdit.querySelector('.popup__form');
+export const inputName = popupEdit.querySelector('#input-name');
+export const inputAbout = popupEdit.querySelector('#input-about');
+export const closePopupButton = popupEdit.querySelector('.popup__button-close');
 
-const editButton = document.querySelector('.portfolio__button-edit');
-const addButton = document.querySelector('.portfolio__button-add');
+export const editButton = document.querySelector('.portfolio__button-edit');
+export const addButton = document.querySelector('.portfolio__button-add');
 
-const portfolioName = document.querySelector('.portfolio__name');
-const portfolioAbout = document.querySelector('.portfolio__about');
+export const portfolioName = document.querySelector('.portfolio__name');
+export const portfolioAbout = document.querySelector('.portfolio__about');
 
-const validationConfig = {
+export const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button-save',
@@ -33,3 +32,30 @@ const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 };
+
+export const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];

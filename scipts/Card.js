@@ -1,4 +1,5 @@
-import {openPopup, closePopup} from './index.js'
+import { openPopup, closePopup } from './index.js'
+import { popupImage, popupImageTitle, popupImgElement, closePopupAddButton } from './constants.js';
 
 export class Card {
   constructor(data, cardSelector) {
@@ -22,10 +23,6 @@ export class Card {
     popupImage.alt = this._title;
     popupImageTitle.textContent = this._title;
     openPopup(popupImgElement);
-  }
-
-  _handleClosePopupImg() {
-    closePopup(popupImgElement);
   }
 
   _likeButton(button) {
@@ -55,10 +52,6 @@ export class Card {
     .querySelector('.elements__card-image')
     .addEventListener('click', () => {
       this._handleOpenPopupImg();
-    });
-
-    closePopupAddButton.addEventListener('click', () => {
-      this._handleClosePopupImg();
     });
 
     this._element
