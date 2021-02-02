@@ -2,7 +2,7 @@ import { Card } from './Card.js'
 import { FormValidator } from './FormValidator.js'
 import { initialCards, overlay, page, popupImgElement, cards, closePopupAddButton, editButton, popupAdd,
   popupAddFormElement, nameInput, linkInput, popupEdit, profileForm, inputName, inputAbout,
-  closePopupButton, addButton, portfolioName, portfolioAbout, validationConfig} from './constants.js'
+  closePopupButton, addButton, portfolioName, portfolioAbout, validationConfig, addCardForm} from './constants.js'
 
 function clickEscapeWhenPopupOpened(event){
   if (event.key === 'Escape') {
@@ -60,13 +60,6 @@ function addCard(item) {
 
 initialCards.forEach(addCard);
 
-/*клик по кнопке редактировать*/
-editButton.addEventListener('click', function(){
-  clearForm(popupEdit);
-  openPopup(popupEdit);
-  updateForm();
-});
-
 /*клик по крестику на форме*/
 closePopupButton.addEventListener('click', function(){
   closePopup(popupEdit);
@@ -96,11 +89,6 @@ function handleProfileSubmit (evt) {
 // он будет следить за событием “submit” - «отправка»
 profileForm.addEventListener('submit', handleProfileSubmit);
 
-/*клик по кнопке добавить*/
-addButton.addEventListener('click', function(){
-  clearForm(popupAdd);
-  openPopup(popupAdd);
-});
 
 /*клик по крестику на форме*/
 closePopupAddButton.addEventListener('click', function(){
@@ -150,20 +138,25 @@ Array.from(popups).forEach(
 
 //Валидация форм
 function enableValidation(obj){
-  const formList = Array.from(document.querySelectorAll(obj.formSelector));
-  formList.forEach((formElement) => {
-    const formValidator = new FormValidator(obj, formElement);
+  const profileFormValidator = new FormValidator(obj, profileForm);
+  profileFormValidator.enableValidation();
+  //клик по кнопке "редактировать"
+  editButton.addEventListener('click', function(){
+    clearForm(popupEdit);
+    openPopup(popupEdit);
+    profileFormValidator.clearValidationErrors(popupEdit);
+    updateForm();
+  });
 
-    addButton.addEventListener('click', () => {
-      formValidator.toggleButtonState();
-      formValidator.clearValidationErrors(popupAdd);
-    });
-
-    editButton.addEventListener('click', function(){
-      formValidator.clearValidationErrors(popupEdit);
-    });
-
-    formValidator.enableValidation();
+  const addCardFormValidator = new FormValidator(obj, addCardForm);
+  addCardFormValidator.enableValidation();
+  //клик по кнопке "добавить"
+  addButton.addEventListener('click', () => {
+    clearForm(popupAdd);
+    openPopup(popupAdd);
+    addCardFormValidator.toggleButtonState();
+    addCardFormValidator.clearValidationErrors(popupAdd);
+    updateForm();
   });
 }
 

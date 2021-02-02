@@ -49,25 +49,10 @@ export class FormValidator {
   }
 
   clearValidationErrors(popup) {
-    const popupInputs = popup.querySelectorAll('.popup__input');
-    const popupInputErrors = popup.querySelectorAll('.popup__input-error');
-
-    Array.from(popupInputs).forEach((item) => {
-      item.classList.remove(validationConfig.inputErrorClass);
-    });
-
-    if (popupInputErrors){
-      Array.from(popupInputErrors).forEach((item) => {
-        item.textContent = '';
-      });
-    }
+    this._inputList.forEach(input => this._hideInputError(input));
   }
 
   enableValidation() {
-    editButton.addEventListener('click', () => {
-      this.toggleButtonState();
-    });
-
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);

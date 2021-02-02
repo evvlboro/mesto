@@ -14,6 +14,7 @@ export const linkInput = popupAdd.querySelector('#add-input-link');
 
 export const popupEdit = document.querySelector('#popup_edit');
 export const profileForm = popupEdit.querySelector('.popup__form');
+export const addCardForm = popupAdd.querySelector('.popup__form');
 export const inputName = popupEdit.querySelector('#input-name');
 export const inputAbout = popupEdit.querySelector('#input-about');
 export const closePopupButton = popupEdit.querySelector('.popup__button-close');
