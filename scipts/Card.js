@@ -1,7 +1,7 @@
-import { openPopup, closePopup } from './index.js'
-import { popupImage, popupImageTitle, popupImgElement, closePopupAddButton } from './constants.js';
+import { openPopup } from './index.js'
+import { popupImage, popupImageTitle, popupImgElement } from './constants.js';
 
-export class Card {
+export default class Card {
   constructor(data, cardSelector) {
     this._imageLink = data.link;
     this._title = data.name;

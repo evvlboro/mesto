@@ -1,5 +1,5 @@
-import { Card } from './Card.js'
-import { FormValidator } from './FormValidator.js'
+import Card from './Card.js'
+import FormValidator from './FormValidator.js'
 import { initialCards, overlay, page, popupImgElement, cards, closePopupAddButton, editButton, popupAdd,
   popupAddFormElement, nameInput, linkInput, popupEdit, profileForm, inputName, inputAbout,
   closePopupButton, addButton, portfolioName, portfolioAbout, validationConfig, addCardForm} from './constants.js'
