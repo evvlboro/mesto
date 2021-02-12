@@ -8,7 +8,8 @@ export default class PopupWithForm extends Popup {
 
   //собирает данные всех полей формы
   _getInputValues() {
-
+    const inputs = this._popup.querySelectorAll('.popup__input');
+    //Array.from(inputs).forEach
   }
 
   setEventListeners() {

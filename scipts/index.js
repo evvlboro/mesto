@@ -3,6 +3,7 @@ import FormValidator from './FormValidator.js'
 import { initialCards, overlay, page, popupImgElement, cards, closePopupAddButton, editButton, popupAdd,
   popupAddFormElement, nameInput, linkInput, popupEdit, profileForm, inputName, inputAbout,
   closePopupButton, addButton, portfolioName, portfolioAbout, validationConfig, addCardForm} from './constants.js'
+import Section from './Section.js';
 
 function clickEscapeWhenPopupOpened(event){
   if (event.key === 'Escape') {
@@ -15,55 +16,46 @@ function clickEscapeWhenPopupOpened(event){
 
 function clearForm(popup) {
   const popupForm = popup.querySelector('.popup__form');
-
-  /*const popupInputs = popup.querySelectorAll('.popup__input');
-  const popupInputErrors = popup.querySelectorAll('.popup__input-error');
-
-  Array.from(popupInputs).forEach((item) => {
-    item.classList.remove(validationConfig.inputErrorClass);
-  });
-
-  if (popupInputErrors){
-    Array.from(popupInputErrors).forEach((item) => {
-      item.textContent = '';
-    });
-  }*/
-
   popupForm.reset();
-
 }
 
-export function openPopup(popup){
-  popup.classList.add('popup_opened');
-  overlay.classList.add('overlay_active');
-  page.classList.add('page_no-scroll');
+// export function openPopup(popup){
+//   popup.classList.add('popup_opened');
+//   overlay.classList.add('overlay_active');
+//   page.classList.add('page_no-scroll');
 
-  document.addEventListener('keydown', clickEscapeWhenPopupOpened);
-}
+//   document.addEventListener('keydown', clickEscapeWhenPopupOpened);
+// }
 
-export function closePopup(popup){
-  popup.classList.remove('popup_opened');
-  overlay.classList.remove('overlay_active');
-  page.classList.remove('page_no-scroll');
+// export function closePopup(popup){
+//   popup.classList.remove('popup_opened');
+//   overlay.classList.remove('overlay_active');
+//   page.classList.remove('page_no-scroll');
 
-  document.removeEventListener('keydown', clickEscapeWhenPopupOpened);
-}
+//   document.removeEventListener('keydown', clickEscapeWhenPopupOpened);
+// }
 
-popupImgElement.querySelector('.popup__button-close').addEventListener('click', function(){
-  closePopup(popupImgElement);
-});
+// popupImgElement.querySelector('.popup__button-close').addEventListener('click', function(){
+//   closePopup(popupImgElement);
+// });
 
-function addCard(item) {
-  const card = new Card(item, '#card-template');
-  cards.prepend(card.generateCard());
-}
+const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, '#card-template');
+      return card.generateCard();
+    }
+  },
+  '.elements__cards'
+);
 
-initialCards.forEach(addCard);
+cardList.renderItems();
 
 /*клик по крестику на форме*/
-closePopupButton.addEventListener('click', function(){
-  closePopup(popupEdit);
-});
+// closePopupButton.addEventListener('click', function(){
+//   closePopup(popupEdit);
+// });
 
 /*ф-ия заполнения полей формы*/
 function updateForm(){
@@ -118,7 +110,7 @@ function handleCardSubmit (evt) {
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-popupAddFormElement.addEventListener('submit', handleCardSubmit);
+// popupAddFormElement.addEventListener('submit', handleCardSubmit);
 
 
 function clickOverlay(event) {
@@ -140,10 +132,11 @@ Array.from(popups).forEach(
 function enableValidation(obj){
   const profileFormValidator = new FormValidator(obj, profileForm);
   profileFormValidator.enableValidation();
+
   //клик по кнопке "редактировать"
   editButton.addEventListener('click', function(){
     clearForm(popupEdit);
-    openPopup(popupEdit);
+    //openPopup(popupEdit);
     profileFormValidator.clearValidationErrors(popupEdit);
     updateForm();
   });
@@ -153,7 +146,7 @@ function enableValidation(obj){
   //клик по кнопке "добавить"
   addButton.addEventListener('click', () => {
     clearForm(popupAdd);
-    openPopup(popupAdd);
+    //openPopup(popupAdd);
     addCardFormValidator.toggleButtonState();
     addCardFormValidator.clearValidationErrors(popupAdd);
     updateForm();

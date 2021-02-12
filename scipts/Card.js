@@ -1,4 +1,4 @@
-import { openPopup } from './index.js'
+// import { openPopup } from './index.js'
 import { popupImage, popupImageTitle, popupImgElement } from './constants.js';
 
 export default class Card {
@@ -18,12 +18,12 @@ export default class Card {
     return cardElement;
   }
 
-  _handleOpenPopupImg() {
-    popupImage.src = this._imageLink;
-    popupImage.alt = this._title;
-    popupImageTitle.textContent = this._title;
-    openPopup(popupImgElement);
-  }
+  // _handleOpenPopupImg() {
+  //   popupImage.src = this._imageLink;
+  //   popupImage.alt = this._title;
+  //   popupImageTitle.textContent = this._title;
+  //   openPopup(popupImgElement);
+  // }
 
   _likeButton(button) {
     button.target.classList.toggle('elements__card-like_active');
@@ -50,9 +50,9 @@ export default class Card {
   _setEventListeners() {
     this._element
     .querySelector('.elements__card-image')
-    .addEventListener('click', () => {
-      this._handleOpenPopupImg();
-    });
+    // .addEventListener('click', () => {
+    //   this._handleOpenPopupImg();
+    // });
 
     this._element
       .querySelector('.elements__card-like')
