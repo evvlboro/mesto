@@ -1,23 +1,27 @@
-import Card from './Card.js'
-import FormValidator from './FormValidator.js'
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 import { initialCards, overlay, page, popupImgElement, cards, closePopupAddButton, editButton, popupAdd,
   popupAddFormElement, nameInput, linkInput, popupEdit, profileForm, inputName, inputAbout,
-  closePopupButton, addButton, portfolioName, portfolioAbout, validationConfig, addCardForm} from './constants.js'
+  closePopupButton, addButton, portfolioName, portfolioAbout, validationConfig, addCardForm, popupImage} from './constants.js';
 import Section from './Section.js';
+import PopupWithForm from './PopupWithForm.js';
+import PopupWithImage from './PopupWithImage.js';
+import UserInfo from './UserInfo.js';
 
-function clickEscapeWhenPopupOpened(event){
-  if (event.key === 'Escape') {
-    const popup_opened = document.querySelector('.popup_opened');
-    if (popup_opened) {
-      closePopup(popup_opened);
-    }
-  }
-}
 
-function clearForm(popup) {
-  const popupForm = popup.querySelector('.popup__form');
-  popupForm.reset();
-}
+// function clickEscapeWhenPopupOpened(event){
+//   if (event.key === 'Escape') {
+//     const popup_opened = document.querySelector('.popup_opened');
+//     if (popup_opened) {
+//       closePopup(popup_opened);
+//     }
+//   }
+// }
+
+// function clearForm(popup) {
+//   const popupForm = popup.querySelector('.popup__form');
+//   popupForm.reset();
+// }
 
 // export function openPopup(popup){
 //   popup.classList.add('popup_opened');
@@ -43,14 +47,53 @@ const cardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, '#card-template');
-      return card.generateCard();
+      createCard(item);
     }
   },
-  '.elements__cards'
+  cards
 );
 
-cardList.renderItems();
+function createCard(data) {
+  const card = new Card(data, '#card-template');
+  const cardElement = card.generateCard();
+  cardList.addItem(cardElement);
+}
+
+const userInfo = new UserInfo(portfolioName, portfolioAbout);
+
+const editPopup = new PopupWithForm(
+  popupEdit,
+  /*validationEditPopup,*/
+  (data) => {
+    userInfo.setUserInfo(data);
+    editPopup.close();
+});
+
+const addPopup = new PopupWithForm(
+  popupAdd,
+  /*validationAddPopup,*/
+  (data) => {
+    createCard(data);
+    addPopup.close();
+});
+
+const popupWithImage = new PopupWithImage(popupImgElement);
+
+popupWithImage.setEventListeners();
+addPopup.setEventListeners();
+editPopup.setEventListeners();
+
+editButton.addEventListener("click", function () {
+  const data = userInfo.getUserInfo();
+  inputName.value = data.inputName;
+  inputAbout.value = data.inputAbout;
+  userInfo.setUserInfo(data);
+  editPopup.open();
+});
+
+addButton.addEventListener("click", function () {
+  addPopup.open();
+});
 
 /*клик по крестику на форме*/
 // closePopupButton.addEventListener('click', function(){
@@ -65,7 +108,7 @@ function updateForm(){
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function handleProfileSubmit (evt) {
+/*function handleProfileSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                         // Так мы можем определить свою логику отправки.
                         // О том, как это делать, расскажем позже.
@@ -75,21 +118,21 @@ function handleProfileSubmit (evt) {
     portfolioAbout.textContent = inputAbout.value;
 
     closePopup(popupEdit);
-}
+}*/
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-profileForm.addEventListener('submit', handleProfileSubmit);
+//profileForm.addEventListener('submit', handleProfileSubmit);
 
 
 /*клик по крестику на форме*/
-closePopupAddButton.addEventListener('click', function(){
-  closePopup(popupAdd);
-});
+// closePopupAddButton.addEventListener('click', function(){
+//   closePopup(popupAdd);
+// });
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function handleCardSubmit (evt) {
+/*function handleCardSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                         // Так мы можем определить свою логику отправки.
                         // О том, как это делать, расскажем позже.
@@ -106,7 +149,7 @@ function handleCardSubmit (evt) {
     closePopup(popupAdd);
     nameInput.value = '';
     linkInput.value = '';
-}
+}*/
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
@@ -122,7 +165,7 @@ function clickOverlay(event) {
 const popups = document.querySelectorAll('.popup');
 Array.from(popups).forEach(
   (item) => {
-    item.addEventListener('click', (event) => {
+    item.addEventListener('mousedown', (event) => {
       clickOverlay(event);
     });
   }
@@ -135,22 +178,27 @@ function enableValidation(obj){
 
   //клик по кнопке "редактировать"
   editButton.addEventListener('click', function(){
-    clearForm(popupEdit);
+
+    //clearForm(popupEdit);
     //openPopup(popupEdit);
     profileFormValidator.clearValidationErrors(popupEdit);
-    updateForm();
+    //updateForm();
+
   });
+
 
   const addCardFormValidator = new FormValidator(obj, addCardForm);
   addCardFormValidator.enableValidation();
   //клик по кнопке "добавить"
   addButton.addEventListener('click', () => {
-    clearForm(popupAdd);
+    //clearForm(popupAdd);
     //openPopup(popupAdd);
     addCardFormValidator.toggleButtonState();
     addCardFormValidator.clearValidationErrors(popupAdd);
-    updateForm();
+    //updateForm();
   });
 }
 
+
+cardList.renderItems();
 enableValidation(validationConfig);

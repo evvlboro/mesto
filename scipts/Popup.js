@@ -2,15 +2,7 @@ import { overlay, page } from './constants.js'
 
 export default class Popup {
   constructor(popupSelector) {
-    this._popup = document.querySelector(popupSelector);
-  }
-
-  _handleEscClose(event){
-    if (event.key === 'Escape') {
-      if (popup_opened) {
-        this.close();
-      }
-    }
+    this._popup = popupSelector;
   }
 
   open(){
@@ -19,6 +11,7 @@ export default class Popup {
     page.classList.add('page_no-scroll');
 
     document.addEventListener('keydown', this._handleEscClose);
+
   }
 
   close(){
@@ -27,6 +20,12 @@ export default class Popup {
     page.classList.remove('page_no-scroll');
 
     document.removeEventListener('keydown', this._handleEscClose);
+  }
+
+  _handleEscClose = (event) => {
+    if (event.key === 'Escape') {
+      this.close();
+    }
   }
 
   setEventListeners(){
