@@ -23,7 +23,6 @@ const cardList = new Section(
 function createCard(data) {
   const card = new Card(data, '#card-template', {
     handleCardClick: () => {
-      console.log(data);
       popupWithImage.open(data);
     }
   });
@@ -71,22 +70,6 @@ function updateForm(){
   inputName.value = portfolioName.textContent;
   inputAbout.value = portfolioAbout.textContent;
 }
-
-
-function clickOverlay(event) {
-  if (event.target.classList.contains('popup_opened')) {
-    closePopup(document.querySelector('.popup_opened'));
-  }
-}
-
-const popups = document.querySelectorAll('.popup');
-Array.from(popups).forEach(
-  (item) => {
-    item.addEventListener('mousedown', (event) => {
-      clickOverlay(event);
-    });
-  }
-);
 
 //Валидация форм
 function enableValidation(obj){

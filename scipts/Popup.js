@@ -5,7 +5,7 @@ export default class Popup {
     this._popup = popupSelector;
   }
 
-  open(){
+  open() {
     this._popup.classList.add('popup_opened');
     overlay.classList.add('overlay_active');
     page.classList.add('page_no-scroll');
@@ -14,7 +14,7 @@ export default class Popup {
 
   }
 
-  close(){
+  close() {
     this._popup.classList.remove('popup_opened');
     overlay.classList.remove('overlay_active');
     page.classList.remove('page_no-scroll');
@@ -27,18 +27,24 @@ export default class Popup {
       this.close();
     }
   }
+  _clickOverlay = (event) => {
+    if (event.target.classList.contains('popup_opened')) {
+      this.close();
+    }
+  }
+  setEventListeners() {
+    const popupBtnClose = this._popup.querySelector('.popup__button-close');
 
-  setEventListeners(){
-    const popup = this._popup.querySelector('.popup__button-close');
-
-    if (!popup) {
-
-      console.log(1213);
+    if (!popupBtnClose) {
       return;
     }
 
-    popup.addEventListener('click', () => {
+    popupBtnClose.addEventListener('click', () => {
       this.close();
+    });
+
+    this._popup.addEventListener('mousedown', (event) => {
+      this._clickOverlay(event);
     });
   }
 }
