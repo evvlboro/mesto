@@ -2,10 +2,11 @@
 import { popupImage, popupImageTitle, popupImgElement } from './constants.js';
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, { handleCardClick }) {
     this._imageLink = data.link;
     this._title = data.name;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -49,10 +50,10 @@ export default class Card {
 
   _setEventListeners() {
     this._element
-    .querySelector('.elements__card-image')
-    // .addEventListener('click', () => {
-    //   this._handleOpenPopupImg();
-    // });
+      .querySelector('.elements__card-image')
+      .addEventListener('click', () => {
+        this._handleCardClick();
+      });
 
     this._element
       .querySelector('.elements__card-like')
