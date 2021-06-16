@@ -1,16 +1,15 @@
 import Popup from './Popup.js'
+import { popupImage, popupImageTitle } from './constants.js';
 
 export default class PopupWithImage extends Popup {
   open(
     {
-      imageLink = 'https://chto-takoe-lyubov.net/wp-content/uploads/2017/08/xvoprositelnyy-znak-stikhi.jpg.pagespeed.ic.ZsPNJr3Kmn.jpg',
-      title = 'unknown',
-      alt = 'unknown' }) {
+      link = 'https://chto-takoe-lyubov.net/wp-content/uploads/2017/08/xvoprositelnyy-znak-stikhi.jpg.pagespeed.ic.ZsPNJr3Kmn.jpg',
+      name = 'unknown' }) {
 
+    popupImage.src = link;
+    popupImage.alt = name;
+    popupImageTitle.textContent = name;
     super.open();
-    this._popup.src = imageLink;
-    this._popup.alt = alt;
-    this._popup.textContent = title;
-    console.log('Тут могут быть ошибки при открытии картинки');
   }
 }

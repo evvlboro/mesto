@@ -23,6 +23,7 @@ const cardList = new Section(
 function createCard(data) {
   const card = new Card(data, '#card-template', {
     handleCardClick: () => {
+      console.log(data);
       popupWithImage.open(data);
     }
   });
