@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Evgeniy Borovikov">
   <meta name="description" content="Сайт &quot;Mesto&quot;">
-  <link href="pages/index.css" rel="stylesheet">
   <title>Mesto</title>
 </head>
 <body class="page">
   <!--overlay_active-->
   <div class="overlay">
     <header class="header">
-      <img src="./images/logo.svg" alt="Логотип сайта" class="header__logo">
+      <img src="<%=require('./images/logo.svg')%>" alt="Логотип сайта" class="header__logo">
     </header>
     <main>
       <section class="portfolio">
         <div class="portfolio__container">
-          <img src="./images/kusto.jpg" alt="Аватар" class="portfolio__avatar">
+          <img src="<%=require('./images/kusto.jpg')%>" alt="Аватар" class="portfolio__avatar">
           <div class="portfolio__photo-info">
             <div class="portfolio__first-line">
               <h1 class="portfolio__name">Жак-Ив Кусто</h1>
@@ -84,6 +83,5 @@
       </div>
     </li>
   </template>
-  <script type="module" src="./scipts/index.js"></script>
 </body>
 </html>
