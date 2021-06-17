@@ -13,6 +13,7 @@
 * HTML
 * CSS
 * JavaScript
+* Webpack
 
 
 **Ссылка на Github Pages:** https://evvlboro.github.io/mesto/
