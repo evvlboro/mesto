@@ -19,19 +19,13 @@ export default class Card {
     return cardElement;
   }
 
-  // _handleOpenPopupImg() {
-  //   popupImage.src = this._imageLink;
-  //   popupImage.alt = this._title;
-  //   popupImageTitle.textContent = this._title;
-  //   openPopup(popupImgElement);
-  // }
-
   _likeButton(button) {
     button.target.classList.toggle('elements__card-like_active');
   }
 
-  _deleteButton(button) {
-    button.target.closest('.elements__card').remove();
+  _deleteButton() {
+    this._element.remove();
+    this._element = null;
   }
 
   generateCard() {
@@ -61,6 +55,8 @@ export default class Card {
 
     this._element
       .querySelector('.elements__card-delete')
-      .addEventListener('click', this._deleteButton);
+      .addEventListener('click', () => {
+        this._deleteButton()
+      });
   }
 }

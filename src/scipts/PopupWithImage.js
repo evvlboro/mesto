@@ -1,5 +1,4 @@
 import Popup from './Popup.js'
-import { popupImage, popupImageTitle } from './constants.js';
 
 export default class PopupWithImage extends Popup {
   open(
@@ -7,9 +6,12 @@ export default class PopupWithImage extends Popup {
       link = 'https://chto-takoe-lyubov.net/wp-content/uploads/2017/08/xvoprositelnyy-znak-stikhi.jpg.pagespeed.ic.ZsPNJr3Kmn.jpg',
       name = 'unknown' }) {
 
-    popupImage.src = link;
-    popupImage.alt = name;
-    popupImageTitle.textContent = name;
+    this._popupImage = this._popup.querySelector('.popup__image');
+    this._popupImageTitle = this._popup.querySelector('.popup__img-title');
+
+    this._popupImage.src = link;
+    this._popupImage.alt = name;
+    this._popupImageTitle.textContent = name;
     super.open();
   }
 }

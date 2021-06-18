@@ -57,7 +57,6 @@ editButton.addEventListener("click", function () {
   const data = userInfo.getUserInfo();
   inputName.value = data.inputName;
   inputAbout.value = data.inputAbout;
-  userInfo.setUserInfo(data);
   editPopup.open();
 });
 
