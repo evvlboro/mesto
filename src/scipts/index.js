@@ -40,6 +40,21 @@ const cardList = new Section(
   cards
 );
 
+const editPopup = new PopupWithForm(
+  popupEdit,
+  (data) => {
+    addButton.textContent = 'Сохранение...';
+    api.setUserInfo(data.name, data.about)
+      .then((res) => {
+        addButton.textContent = 'Готово';
+        userInfo.setUserInfo(res);
+        editPopup.close();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+});
+
 function createCard(data) {
   const card = new Card(data, '#card-template', {
     handleCardClick: () => {
@@ -49,13 +64,6 @@ function createCard(data) {
   const cardElement = card.generateCard();
   cardList.addItem(cardElement);
 }
-
-const editPopup = new PopupWithForm(
-  popupEdit,
-  (data) => {
-    userInfo.setUserInfo(data);
-    editPopup.close();
-});
 
 const addPopup = new PopupWithForm(
   popupAdd,

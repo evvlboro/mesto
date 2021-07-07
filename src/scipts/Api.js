@@ -5,7 +5,7 @@ export default class Api {
   }
 
   getUserInfo() {
-    return fetch(this._url + `/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers
     })
@@ -14,7 +14,7 @@ export default class Api {
   }
 
   setUserInfo(personName, personAbout) {
-    return fetch(this._url + `/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
