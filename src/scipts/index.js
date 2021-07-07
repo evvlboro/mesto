@@ -3,13 +3,32 @@ import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import { initialCards, overlay, page, popupImgElement, cards, closePopupAddButton, editButton, popupAdd,
   popupAddFormElement, nameInput, linkInput, popupEdit, profileForm, inputName, inputAbout,
-  closePopupButton, addButton, portfolioName, portfolioAbout, validationConfig, addCardForm, popupImage} from './constants.js';
+  closePopupButton, addButton, portfolioName, portfolioAbout, portfolioAvatar, validationConfig, addCardForm, popupImage} from './constants.js';
 import Section from './Section.js';
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
 import UserInfo from './UserInfo.js';
+import Api from './Api';
 
 const popupWithImage = new PopupWithImage(popupImgElement);
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-25',
+  headers: {
+    authorization: '1a4ad76b-29b2-4dd1-8dcf-be36c0080f4b',
+    'Content-Type': 'application/json'
+  }
+});
+
+const userInfo = new UserInfo(portfolioName, portfolioAbout, portfolioAvatar);
+
+api.getUserInfo()
+  .then((data) => {
+    userInfo.setUserInfo(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 const cardList = new Section(
   {
@@ -31,11 +50,8 @@ function createCard(data) {
   cardList.addItem(cardElement);
 }
 
-const userInfo = new UserInfo(portfolioName, portfolioAbout);
-
 const editPopup = new PopupWithForm(
   popupEdit,
-  /*validationEditPopup,*/
   (data) => {
     userInfo.setUserInfo(data);
     editPopup.close();
@@ -55,8 +71,8 @@ editPopup.setEventListeners();
 
 editButton.addEventListener("click", function () {
   const data = userInfo.getUserInfo();
-  inputName.value = data.inputName;
-  inputAbout.value = data.inputAbout;
+  inputName.value = data.name;
+  inputAbout.value = data.about;
   editPopup.open();
 });
 

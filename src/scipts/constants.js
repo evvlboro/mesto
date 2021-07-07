@@ -24,6 +24,8 @@ export const addButton = document.querySelector('.portfolio__button-add');
 
 export const portfolioName = document.querySelector('.portfolio__name');
 export const portfolioAbout = document.querySelector('.portfolio__about');
+export const portfolioAvatar = document.querySelector('.portfolio__avatar');
+
 
 export const validationConfig = {
   formSelector: '.popup__form',
