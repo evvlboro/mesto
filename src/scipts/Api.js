@@ -1,5 +1,5 @@
 export default class Api {
-  constructor({ baseUrl, headers }){
+  constructor({ baseUrl, headers }) {
     this._url = baseUrl;
     this._headers = headers;
   }
@@ -33,6 +33,15 @@ export default class Api {
       body: JSON.stringify({
         avatar: url,
       })
+    })
+      .then(res => this._checkRequestResult(res))
+      .catch(error => this._errorHandler(error));
+  }
+
+  getInitalCardsList() {
+    return fetch(`${this._url}/cards`, {
+      method: "GET",
+      headers: this._headers
     })
       .then(res => this._checkRequestResult(res))
       .catch(error => this._errorHandler(error));

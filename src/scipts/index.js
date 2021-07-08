@@ -34,7 +34,14 @@ api.getUserInfo()
 
 const cardList = new Section(
   {
-    items: initialCards,
+    items:
+      api.getInitalCardsList()
+        .then((data) => {
+          return data;
+        })
+        .catch((error) => {
+          console.log(error);
+        }),
     renderer: (item) => {
       createCard(item);
     }
