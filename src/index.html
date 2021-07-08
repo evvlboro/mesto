@@ -17,6 +17,9 @@
       <section class="portfolio">
         <div class="portfolio__container">
           <img src="<%=require('./images/kusto.jpg')%>" alt="Аватар" class="portfolio__avatar">
+          <div class="portfolio__hover" id="portfolio_avatar_hover">
+            <div class="portfolio__hover-button"></div>
+          </div>
           <div class="portfolio__photo-info">
             <div class="portfolio__first-line">
               <h1 class="portfolio__name">Загрузка...</h1>
@@ -38,6 +41,18 @@
     </footer>
   </div>
   <!-- popup_opened -->
+  <div class="popup" id="popup_avatar">
+    <div class="popup__container popup__container_form-style">
+      <button type="button" class="popup__button-close"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form" name="popupForm" novalidate>
+        <input type="url" id="avatar-input-link" name="link" class="popup__input" placeholder="Ссылка на картинку"
+          autocomplete="off" required>
+        <span class="popup__input-error avatar-input-link-error"></span>
+        <button type="submit" class="popup__button-save">Сохранить</button>
+      </form>
+    </div>
+  </div>
   <div class="popup" id="popup_edit">
     <div class="popup__container popup__container_form-style">
       <button type="button" class="popup__button-close"></button>

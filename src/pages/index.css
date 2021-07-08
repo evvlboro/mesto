@@ -19,6 +19,8 @@
 @import url(../blocks/portfolio/__about/portfolio__about.css);
 @import url(../blocks/portfolio/__button-edit/portfolio__button-edit.css);
 @import url(../blocks/portfolio/__first-line/portfolio__first-line.css);
+@import url(../blocks/portfolio/__hover/portfolio__hover.css);
+@import url(../blocks/portfolio/__hover-button/portfolio__hover-button.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__cards/elements__cards.css);

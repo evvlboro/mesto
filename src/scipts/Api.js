@@ -26,6 +26,18 @@ export default class Api {
       .catch(error => this._errorHandler(error));
   }
 
+  setAvatar(url) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: url,
+      })
+    })
+      .then(res => this._checkRequestResult(res))
+      .catch(error => this._errorHandler(error));
+  }
+
   _checkRequestResult(res) {
     if (res.ok) {
       return res.json();

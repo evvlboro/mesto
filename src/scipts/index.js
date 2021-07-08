@@ -1,9 +1,11 @@
 import '../pages/index.css';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-import { initialCards, overlay, page, popupImgElement, cards, closePopupAddButton, editButton, popupAdd,
-  popupAddFormElement, nameInput, linkInput, popupEdit, profileForm, inputName, inputAbout,
-  closePopupButton, addButton, portfolioName, portfolioAbout, portfolioAvatar, validationConfig, addCardForm, popupImage} from './constants.js';
+import {
+  initialCards, overlay, page, popupImgElement, cards, closePopupAddButton, avatarButton, editButton, popupAdd,
+  popupAddFormElement, nameInput, linkInput, popupAvatar, popupEdit, avatarForm, profileForm, inputName, inputAbout,
+  closePopupButton, addButton, portfolioName, portfolioAbout, portfolioAvatar, validationConfig, addCardForm, popupImage
+} from './constants.js';
 import Section from './Section.js';
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
@@ -40,20 +42,41 @@ const cardList = new Section(
   cards
 );
 
-const editPopup = new PopupWithForm(
-  popupEdit,
+const avatarPopup = new PopupWithForm(
+  popupAvatar,
   (data) => {
-    addButton.textContent = 'Сохранение...';
-    api.setUserInfo(data.name, data.about)
+    const saveButton = popupAvatar.querySelector('.popup__button-save');
+    saveButton.textContent = 'Сохранение...';
+    api.setAvatar(data.link)
       .then((res) => {
-        addButton.textContent = 'Готово';
         userInfo.setUserInfo(res);
-        editPopup.close();
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        avatarPopup.close();
+        saveButton.textContent = 'Сохранить';
       });
-});
+  });
+
+const editPopup = new PopupWithForm(
+  popupEdit,
+  (data) => {
+    const saveButton = popupEdit.querySelector('.popup__button-save');
+    saveButton.textContent = 'Сохранение...';
+    api.setUserInfo(data.name, data.about)
+      .then((res) => {
+        userInfo.setUserInfo(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        editPopup.close();
+        saveButton.textContent = 'Сохранить';
+      });
+  });
 
 function createCard(data) {
   const card = new Card(data, '#card-template', {
@@ -71,11 +94,16 @@ const addPopup = new PopupWithForm(
   (data) => {
     createCard(data);
     addPopup.close();
-});
+  });
 
 popupWithImage.setEventListeners();
+avatarPopup.setEventListeners();
 addPopup.setEventListeners();
 editPopup.setEventListeners();
+
+avatarButton.addEventListener("click", function () {
+  avatarPopup.open();
+});
 
 editButton.addEventListener("click", function () {
   const data = userInfo.getUserInfo();
@@ -88,20 +116,21 @@ addButton.addEventListener("click", function () {
   addPopup.open();
 });
 
-
-/*ф-ия заполнения полей формы*/
-function updateForm(){
-  inputName.value = portfolioName.textContent;
-  inputAbout.value = portfolioAbout.textContent;
-}
-
 //Валидация форм
-function enableValidation(obj){
+function enableValidation(obj) {
+  const avatarFormValidator = new FormValidator(obj, avatarForm);
+  avatarFormValidator.enableValidation();
+  //клик по аватарке
+  avatarButton.addEventListener('click', () => {
+    avatarFormValidator.toggleButtonState();
+    avatarFormValidator.clearValidationErrors(popupAvatar);
+  });
+
   const profileFormValidator = new FormValidator(obj, profileForm);
   profileFormValidator.enableValidation();
 
   //клик по кнопке "редактировать"
-  editButton.addEventListener('click', function(){
+  editButton.addEventListener('click', function () {
 
     //clearForm(popupEdit);
     //openPopup(popupEdit);
