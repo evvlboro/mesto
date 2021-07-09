@@ -78,6 +78,15 @@ export default class Api {
       .catch(error => this._errorHandler(error));
   }
 
+  deleteCard(cardID) {
+    return fetch(`${this._url}/cards/${cardID}`, {
+      method: "DELETE",
+      headers: this._headers
+    })
+      .then(res => this._checkRequestResult(res))
+      .catch(error => this._errorHandler(error));
+  }
+
   _checkRequestResult(res) {
     if (res.ok) {
       return res.json();

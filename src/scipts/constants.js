@@ -12,6 +12,7 @@ export const popupAddFormElement = popupAdd.querySelector('.popup__form');
 export const nameInput = popupAdd.querySelector('#add-input-name');
 export const linkInput = popupAdd.querySelector('#add-input-link');
 
+export const popupDelete = document.querySelector('#popup_delete');
 export const popupAvatar = document.querySelector('#popup_avatar');
 export const popupEdit = document.querySelector('#popup_edit');
 export const avatarForm = popupAvatar.querySelector('.popup__form');

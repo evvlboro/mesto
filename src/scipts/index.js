@@ -2,15 +2,16 @@ import '../pages/index.css';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import {
-  initialCards, overlay, page, popupImgElement, cards, closePopupAddButton, avatarButton, editButton, popupAdd,
-  popupAddFormElement, nameInput, linkInput, popupAvatar, popupEdit, avatarForm, profileForm, inputName, inputAbout,
-  closePopupButton, addButton, portfolioName, portfolioAbout, portfolioAvatar, validationConfig, addCardForm, popupImage
+  popupImgElement, cards, avatarButton, editButton, popupAdd,
+  popupDelete, popupAvatar, popupEdit, avatarForm, profileForm, inputName, inputAbout,
+  addButton, portfolioName, portfolioAbout, portfolioAvatar, validationConfig, addCardForm
 } from './constants.js';
 import Section from './Section.js';
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
 import UserInfo from './UserInfo.js';
 import Api from './Api';
+import PopupDelete from './PopupDelete';
 
 const popupWithImage = new PopupWithImage(popupImgElement);
 
@@ -86,12 +87,37 @@ const editPopup = new PopupWithForm(
       });
   });
 
-function createCard(data) {
+const deletePopup = new PopupDelete(
+  popupDelete,
+  (cardData, cardElement) => {
+    const saveButton = popupDelete.querySelector('.popup__button-save');
+    saveButton.textContent = 'Удаление...';
+    api.deleteCard(cardData._id)
+      .then(() => {
+        cardElement.remove();
+        cardElement = null;
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        saveButton.textContent = "Да"
+        deletePopup.close();
+      });
+  }
+);
 
+function createCard(data) {
   const card = new Card(data, '#card-template',
     {
       handleCardClick: () => {
         popupWithImage.open(data);
+      }
+    },
+    {
+      handleDeleteClick: (cardData, cardElement) => {
+        deletePopup.deleteButtonClick(cardData, cardElement);
+        deletePopup.open();
       }
     },
     {
@@ -146,6 +172,7 @@ popupWithImage.setEventListeners();
 avatarPopup.setEventListeners();
 addPopup.setEventListeners();
 editPopup.setEventListeners();
+deletePopup.setEventListeners();
 
 avatarButton.addEventListener("click", function () {
   avatarPopup.open();
