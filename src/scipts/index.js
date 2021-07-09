@@ -87,6 +87,7 @@ const editPopup = new PopupWithForm(
   });
 
 function createCard(data) {
+
   const card = new Card(data, '#card-template',
     {
       handleCardClick: () => {

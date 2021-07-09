@@ -1,6 +1,3 @@
-// import { openPopup } from './index.js'
-import { popupImage, popupImageTitle, popupImgElement } from './constants.js';
-
 export default class Card {
   constructor(data, cardSelector, { handleCardClick }, { setLikeAPI }, { removeLikeAPI }, { userId }) {
     this._imageLink = data.link;
@@ -11,6 +8,8 @@ export default class Card {
     this._setLikeAPI = setLikeAPI;
     this._removeLikeAPI = removeLikeAPI;
     this._userId = userId;
+    this._likeList = data.likes;
+
     // console.log(data);
   }
 
@@ -37,7 +36,7 @@ export default class Card {
         });
         if (isLiked) {
           this._element.querySelector(".elements__counter").textContent = data.likes.length;
-          evt.target.classList.add("elements__card-like_active");
+          button.target.classList.add("elements__card-like_active");
         }
       })
     }
@@ -61,6 +60,13 @@ export default class Card {
     cardtTitle.textContent = this._title;
     cardLikes.textContent = this._likes.length;
 
+    const isLiked = this._likeList.some(element => {
+      return element._id === this._userId;
+    });
+    if (isLiked) {
+      this._element.querySelector(".elements__card-like").classList.add("elements__card-like_active");
+    }
+
     return this._element;
   }
 
@@ -73,7 +79,7 @@ export default class Card {
 
     this._element
       .querySelector('.elements__card-like')
-      .addEventListener('click', this._likeButton);
+      .addEventListener('click', (event) => { this._likeButton(event) });
 
     this._element
       .querySelector('.elements__card-delete')
