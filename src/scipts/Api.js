@@ -47,6 +47,19 @@ export default class Api {
       .catch(error => this._errorHandler(error));
   }
 
+  sendCard(data) {
+    return fetch(`${this._url}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link
+      })
+    })
+      .then(res => this._checkRequestResult(res))
+      .catch(error => this._errorHandler(error));
+  }
+
   _checkRequestResult(res) {
     if (res.ok) {
       return res.json();

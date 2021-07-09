@@ -37,7 +37,7 @@ const cardList = new Section(
     items:
       api.getInitalCardsList()
         .then((data) => {
-          return data;
+          return data.reverse();
         })
         .catch((error) => {
           console.log(error);
@@ -97,10 +97,22 @@ function createCard(data) {
 
 const addPopup = new PopupWithForm(
   popupAdd,
-  /*validationAddPopup,*/
   (data) => {
-    createCard(data);
-    addPopup.close();
+    const saveButton = popupAdd.querySelector('.popup__button-save');
+    saveButton.textContent = 'Сохранение...';
+    api.sendCard(data)
+      .then((res) => {
+        createCard(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        addPopup.close();
+        saveButton.textContent = 'Сохранить';
+      });
+
+
   });
 
 popupWithImage.setEventListeners();
