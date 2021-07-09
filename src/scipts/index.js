@@ -24,6 +24,7 @@ const api = new Api({
 
 const userInfo = new UserInfo(portfolioName, portfolioAbout, portfolioAvatar);
 
+
 api.getUserInfo()
   .then((data) => {
     userInfo.setUserInfo(data);
@@ -55,8 +56,8 @@ const avatarPopup = new PopupWithForm(
     const saveButton = popupAvatar.querySelector('.popup__button-save');
     saveButton.textContent = 'Сохранение...';
     api.setAvatar(data.link)
-      .then((res) => {
-        userInfo.setUserInfo(res);
+      .then((result) => {
+        userInfo.setUserInfo(result);
       })
       .catch((error) => {
         console.log(error);
@@ -73,8 +74,8 @@ const editPopup = new PopupWithForm(
     const saveButton = popupEdit.querySelector('.popup__button-save');
     saveButton.textContent = 'Сохранение...';
     api.setUserInfo(data.name, data.about)
-      .then((res) => {
-        userInfo.setUserInfo(res);
+      .then((result) => {
+        userInfo.setUserInfo(result);
       })
       .catch((error) => {
         console.log(error);
@@ -86,11 +87,36 @@ const editPopup = new PopupWithForm(
   });
 
 function createCard(data) {
-  const card = new Card(data, '#card-template', {
-    handleCardClick: () => {
-      popupWithImage.open(data);
-    }
-  });
+  const card = new Card(data, '#card-template',
+    {
+      handleCardClick: () => {
+        popupWithImage.open(data);
+      }
+    },
+    {
+      setLikeAPI: (callback) => {
+        api.setLike(data._id)
+          .then((result) => {
+            callback(result);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      }
+    },
+    {
+      removeLikeAPI: (callback) => {
+        api.removeLike(data._id)
+          .then((result) => {
+            callback(result);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      }
+    },
+    { userId: userInfo.getUserInfo().userId }
+  );
   const cardElement = card.generateCard();
   cardList.addItem(cardElement);
 }
@@ -101,8 +127,8 @@ const addPopup = new PopupWithForm(
     const saveButton = popupAdd.querySelector('.popup__button-save');
     saveButton.textContent = 'Сохранение...';
     api.sendCard(data)
-      .then((res) => {
-        createCard(data);
+      .then((result) => {
+        createCard(result);
       })
       .catch((error) => {
         console.log(error);

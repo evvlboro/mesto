@@ -60,6 +60,24 @@ export default class Api {
       .catch(error => this._errorHandler(error));
   }
 
+  setLike(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      method: "PUT",
+      headers: this._headers
+    })
+      .then(res => this._checkRequestResult(res))
+      .catch(error => this._errorHandler(error));
+  }
+
+  removeLike(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers
+    })
+      .then(res => this._checkRequestResult(res))
+      .catch(error => this._errorHandler(error));
+  }
+
   _checkRequestResult(res) {
     if (res.ok) {
       return res.json();
