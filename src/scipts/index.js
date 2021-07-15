@@ -225,6 +225,16 @@ function enableValidation(obj) {
   });
 }
 
-
-cardList.renderItems();
+Promise.all([
+  api.getUserInfo,
+  api.getInitalCardsList,
+])
+  .then(([userData, initialCards]) => {
+    // все данные получены, отрисовываем нужные данные
+    cardList.renderItems();
+  })
+  .catch((err) => {
+    // попадаем сюда, если один из промисов завершится ошибкой
+    console.log(err);
+  });
 enableValidation(validationConfig);
